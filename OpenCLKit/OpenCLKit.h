@@ -14,6 +14,8 @@ FOUNDATION_EXPORT double OpenCLKitVersionNumber;
 //! Project version string for OpenCLKit.
 FOUNDATION_EXPORT const unsigned char OpenCLKitVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <OpenCLKit/PublicHeader.h>
-
-
+#import <OpenCLKit/CLContext.h>
+#import <OpenCLKit/CLDevice.h>
+#import <OpenCLKit/CLKernel.h>
+#import <OpenCLKit/CLPlatform.h>
+#import <OpenCLKit/CLProgram.h>

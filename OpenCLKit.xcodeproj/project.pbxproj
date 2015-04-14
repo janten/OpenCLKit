@@ -8,27 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		EE15F72C1ADD2BB500297BE8 /* OpenCLKit.h in Headers */ = {isa = PBXBuildFile; fileRef = EE15F72B1ADD2BB500297BE8 /* OpenCLKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EE15F7321ADD2BB500297BE8 /* OpenCLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE15F7261ADD2BB500297BE8 /* OpenCLKit.framework */; };
-		EE15F7391ADD2BB500297BE8 /* OpenCLKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE15F7381ADD2BB500297BE8 /* OpenCLKitTests.m */; };
+		EE15F7441ADD2C1700297BE8 /* CLProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = EE15F7421ADD2C1700297BE8 /* CLProgram.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE15F7451ADD2C1700297BE8 /* CLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = EE15F7431ADD2C1700297BE8 /* CLProgram.m */; };
+		EE15F7471ADD2C2300297BE8 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE15F7461ADD2C2300297BE8 /* OpenCL.framework */; };
+		EE15F74A1ADD2CAF00297BE8 /* CLKernel.h in Headers */ = {isa = PBXBuildFile; fileRef = EE15F7481ADD2CAF00297BE8 /* CLKernel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE15F74B1ADD2CAF00297BE8 /* CLKernel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE15F7491ADD2CAF00297BE8 /* CLKernel.m */; };
+		EE15F74E1ADD2CD000297BE8 /* CLContext.h in Headers */ = {isa = PBXBuildFile; fileRef = EE15F74C1ADD2CD000297BE8 /* CLContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE15F74F1ADD2CD000297BE8 /* CLContext.m in Sources */ = {isa = PBXBuildFile; fileRef = EE15F74D1ADD2CD000297BE8 /* CLContext.m */; };
+		EE15F7521ADD2D9B00297BE8 /* CLPlatform.h in Headers */ = {isa = PBXBuildFile; fileRef = EE15F7501ADD2D9B00297BE8 /* CLPlatform.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE15F7531ADD2D9B00297BE8 /* CLPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = EE15F7511ADD2D9B00297BE8 /* CLPlatform.m */; };
+		EE15F7561ADD3B6600297BE8 /* CLDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = EE15F7541ADD3B6600297BE8 /* CLDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE15F7571ADD3B6600297BE8 /* CLDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = EE15F7551ADD3B6600297BE8 /* CLDevice.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		EE15F7331ADD2BB500297BE8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EE15F71D1ADD2BB500297BE8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EE15F7251ADD2BB500297BE8;
-			remoteInfo = OpenCLKit;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		EE15F7261ADD2BB500297BE8 /* OpenCLKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenCLKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE15F72A1ADD2BB500297BE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE15F72B1ADD2BB500297BE8 /* OpenCLKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCLKit.h; sourceTree = "<group>"; };
-		EE15F7311ADD2BB500297BE8 /* OpenCLKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenCLKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE15F7371ADD2BB500297BE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EE15F7381ADD2BB500297BE8 /* OpenCLKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenCLKitTests.m; sourceTree = "<group>"; };
+		EE15F7421ADD2C1700297BE8 /* CLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLProgram.h; sourceTree = "<group>"; };
+		EE15F7431ADD2C1700297BE8 /* CLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLProgram.m; sourceTree = "<group>"; };
+		EE15F7461ADD2C2300297BE8 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
+		EE15F7481ADD2CAF00297BE8 /* CLKernel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLKernel.h; sourceTree = "<group>"; };
+		EE15F7491ADD2CAF00297BE8 /* CLKernel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLKernel.m; sourceTree = "<group>"; };
+		EE15F74C1ADD2CD000297BE8 /* CLContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLContext.h; sourceTree = "<group>"; };
+		EE15F74D1ADD2CD000297BE8 /* CLContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLContext.m; sourceTree = "<group>"; };
+		EE15F7501ADD2D9B00297BE8 /* CLPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPlatform.h; sourceTree = "<group>"; };
+		EE15F7511ADD2D9B00297BE8 /* CLPlatform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPlatform.m; sourceTree = "<group>"; };
+		EE15F7541ADD3B6600297BE8 /* CLDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDevice.h; sourceTree = "<group>"; };
+		EE15F7551ADD3B6600297BE8 /* CLDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLDevice.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,14 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EE15F72E1ADD2BB500297BE8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EE15F7321ADD2BB500297BE8 /* OpenCLKit.framework in Frameworks */,
+				EE15F7471ADD2C2300297BE8 /* OpenCL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,7 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				EE15F7281ADD2BB500297BE8 /* OpenCLKit */,
-				EE15F7351ADD2BB500297BE8 /* OpenCLKitTests */,
+				EE15F76E1ADD445000297BE8 /* Frameworks */,
 				EE15F7271ADD2BB500297BE8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,7 +63,6 @@
 			isa = PBXGroup;
 			children = (
 				EE15F7261ADD2BB500297BE8 /* OpenCLKit.framework */,
-				EE15F7311ADD2BB500297BE8 /* OpenCLKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,6 +70,16 @@
 		EE15F7281ADD2BB500297BE8 /* OpenCLKit */ = {
 			isa = PBXGroup;
 			children = (
+				EE15F74C1ADD2CD000297BE8 /* CLContext.h */,
+				EE15F74D1ADD2CD000297BE8 /* CLContext.m */,
+				EE15F7541ADD3B6600297BE8 /* CLDevice.h */,
+				EE15F7551ADD3B6600297BE8 /* CLDevice.m */,
+				EE15F7481ADD2CAF00297BE8 /* CLKernel.h */,
+				EE15F7491ADD2CAF00297BE8 /* CLKernel.m */,
+				EE15F7501ADD2D9B00297BE8 /* CLPlatform.h */,
+				EE15F7511ADD2D9B00297BE8 /* CLPlatform.m */,
+				EE15F7421ADD2C1700297BE8 /* CLProgram.h */,
+				EE15F7431ADD2C1700297BE8 /* CLProgram.m */,
 				EE15F72B1ADD2BB500297BE8 /* OpenCLKit.h */,
 				EE15F7291ADD2BB500297BE8 /* Supporting Files */,
 			);
@@ -85,21 +94,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		EE15F7351ADD2BB500297BE8 /* OpenCLKitTests */ = {
+		EE15F76E1ADD445000297BE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EE15F7381ADD2BB500297BE8 /* OpenCLKitTests.m */,
-				EE15F7361ADD2BB500297BE8 /* Supporting Files */,
+				EE15F7461ADD2C2300297BE8 /* OpenCL.framework */,
 			);
-			path = OpenCLKitTests;
-			sourceTree = "<group>";
-		};
-		EE15F7361ADD2BB500297BE8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				EE15F7371ADD2BB500297BE8 /* Info.plist */,
-			);
-			name = "Supporting Files";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,6 +109,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE15F7441ADD2C1700297BE8 /* CLProgram.h in Headers */,
+				EE15F7521ADD2D9B00297BE8 /* CLPlatform.h in Headers */,
+				EE15F74E1ADD2CD000297BE8 /* CLContext.h in Headers */,
+				EE15F7561ADD3B6600297BE8 /* CLDevice.h in Headers */,
+				EE15F74A1ADD2CAF00297BE8 /* CLKernel.h in Headers */,
 				EE15F72C1ADD2BB500297BE8 /* OpenCLKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,24 +139,6 @@
 			productReference = EE15F7261ADD2BB500297BE8 /* OpenCLKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		EE15F7301ADD2BB500297BE8 /* OpenCLKitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EE15F73F1ADD2BB500297BE8 /* Build configuration list for PBXNativeTarget "OpenCLKitTests" */;
-			buildPhases = (
-				EE15F72D1ADD2BB500297BE8 /* Sources */,
-				EE15F72E1ADD2BB500297BE8 /* Frameworks */,
-				EE15F72F1ADD2BB500297BE8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EE15F7341ADD2BB500297BE8 /* PBXTargetDependency */,
-			);
-			name = OpenCLKitTests;
-			productName = OpenCLKitTests;
-			productReference = EE15F7311ADD2BB500297BE8 /* OpenCLKitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -162,9 +149,6 @@
 				ORGANIZATIONNAME = "Jan-Gerd Tenberge";
 				TargetAttributes = {
 					EE15F7251ADD2BB500297BE8 = {
-						CreatedOnToolsVersion = 6.3;
-					};
-					EE15F7301ADD2BB500297BE8 = {
 						CreatedOnToolsVersion = 6.3;
 					};
 				};
@@ -182,20 +166,12 @@
 			projectRoot = "";
 			targets = (
 				EE15F7251ADD2BB500297BE8 /* OpenCLKit */,
-				EE15F7301ADD2BB500297BE8 /* OpenCLKitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EE15F7241ADD2BB500297BE8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EE15F72F1ADD2BB500297BE8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -209,26 +185,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EE15F72D1ADD2BB500297BE8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EE15F7391ADD2BB500297BE8 /* OpenCLKitTests.m in Sources */,
+				EE15F74F1ADD2CD000297BE8 /* CLContext.m in Sources */,
+				EE15F7451ADD2C1700297BE8 /* CLProgram.m in Sources */,
+				EE15F74B1ADD2CAF00297BE8 /* CLKernel.m in Sources */,
+				EE15F7571ADD3B6600297BE8 /* CLDevice.m in Sources */,
+				EE15F7531ADD2D9B00297BE8 /* CLPlatform.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		EE15F7341ADD2BB500297BE8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EE15F7251ADD2BB500297BE8 /* OpenCLKit */;
-			targetProxy = EE15F7331ADD2BB500297BE8 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		EE15F73A1ADD2BB500297BE8 /* Debug */ = {
@@ -348,38 +313,6 @@
 			};
 			name = Release;
 		};
-		EE15F7401ADD2BB500297BE8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = OpenCLKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		EE15F7411ADD2BB500297BE8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = OpenCLKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -399,14 +332,7 @@
 				EE15F73E1ADD2BB500297BE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		EE15F73F1ADD2BB500297BE8 /* Build configuration list for PBXNativeTarget "OpenCLKitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EE15F7401ADD2BB500297BE8 /* Debug */,
-				EE15F7411ADD2BB500297BE8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
