@@ -14,6 +14,7 @@ FOUNDATION_EXPORT double OpenCLKitVersionNumber;
 //! Project version string for OpenCLKit.
 FOUNDATION_EXPORT const unsigned char OpenCLKitVersionString[];
 
+#import <OpenCLKit/CLCommandQueue.h>
 #import <OpenCLKit/CLContext.h>
 #import <OpenCLKit/CLDevice.h>
 #import <OpenCLKit/CLKernel.h>

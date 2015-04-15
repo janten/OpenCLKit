@@ -7,7 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+@import OpenCL;
+
+@class CLProgram;
 
 @interface CLKernel : NSObject
+
+@property (readonly) CLProgram *program;
+@property (readonly) NSString *name;
+@property (readonly) NSArray *arguments;
+
+- (instancetype)initWithProgram:(CLProgram *)program kernel:(cl_kernel)kernel NS_DESIGNATED_INITIALIZER;
 
 @end

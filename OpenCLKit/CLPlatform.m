@@ -66,7 +66,7 @@
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"%@ %@", self.name, self.version];
+	return [NSString stringWithFormat:@"%@ (%@ %@)", [super description], self.name, self.version];
 }
 
 #pragma mark - Properties

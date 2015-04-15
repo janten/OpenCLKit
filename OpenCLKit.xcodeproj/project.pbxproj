@@ -19,6 +19,8 @@
 		EE15F7531ADD2D9B00297BE8 /* CLPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = EE15F7511ADD2D9B00297BE8 /* CLPlatform.m */; };
 		EE15F7561ADD3B6600297BE8 /* CLDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = EE15F7541ADD3B6600297BE8 /* CLDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE15F7571ADD3B6600297BE8 /* CLDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = EE15F7551ADD3B6600297BE8 /* CLDevice.m */; };
+		EE15F7711ADE921F00297BE8 /* CLCommandQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = EE15F76F1ADE921F00297BE8 /* CLCommandQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE15F7721ADE921F00297BE8 /* CLCommandQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = EE15F7701ADE921F00297BE8 /* CLCommandQueue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		EE15F7511ADD2D9B00297BE8 /* CLPlatform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPlatform.m; sourceTree = "<group>"; };
 		EE15F7541ADD3B6600297BE8 /* CLDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDevice.h; sourceTree = "<group>"; };
 		EE15F7551ADD3B6600297BE8 /* CLDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLDevice.m; sourceTree = "<group>"; };
+		EE15F76F1ADE921F00297BE8 /* CLCommandQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCommandQueue.h; sourceTree = "<group>"; };
+		EE15F7701ADE921F00297BE8 /* CLCommandQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCommandQueue.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 		EE15F7281ADD2BB500297BE8 /* OpenCLKit */ = {
 			isa = PBXGroup;
 			children = (
+				EE15F76F1ADE921F00297BE8 /* CLCommandQueue.h */,
+				EE15F7701ADE921F00297BE8 /* CLCommandQueue.m */,
 				EE15F74C1ADD2CD000297BE8 /* CLContext.h */,
 				EE15F74D1ADD2CD000297BE8 /* CLContext.m */,
 				EE15F7541ADD3B6600297BE8 /* CLDevice.h */,
@@ -109,6 +115,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE15F7711ADE921F00297BE8 /* CLCommandQueue.h in Headers */,
 				EE15F7441ADD2C1700297BE8 /* CLProgram.h in Headers */,
 				EE15F7521ADD2D9B00297BE8 /* CLPlatform.h in Headers */,
 				EE15F74E1ADD2CD000297BE8 /* CLContext.h in Headers */,
@@ -185,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE15F7721ADE921F00297BE8 /* CLCommandQueue.m in Sources */,
 				EE15F74F1ADD2CD000297BE8 /* CLContext.m in Sources */,
 				EE15F7451ADD2C1700297BE8 /* CLProgram.m in Sources */,
 				EE15F74B1ADD2CAF00297BE8 /* CLKernel.m in Sources */,
@@ -289,7 +297,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = OpenCLKit/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -306,7 +313,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = OpenCLKit/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

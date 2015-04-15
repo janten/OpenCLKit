@@ -7,15 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+@import OpenCL;
 
 @class CLContext;
+@class CLDevice;
+@class CLKernel;
 
 @interface CLProgram : NSObject
 
 @property (readonly) CLContext *context;
-@property (readonly) NSArray *kernelNames;
+@property (readonly) NSArray *kernels;
 
 - (instancetype)initWithContext:(CLContext *)context source:(NSString *)source NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithContext:(CLContext *)context URL:(NSURL *)URL;
+- (NSString *)buildLogForDevice:(CLDevice *)device;
+- (cl_build_status)buildStatusForDevice:(CLDevice *)device;
 
 @end

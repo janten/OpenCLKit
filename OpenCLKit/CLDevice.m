@@ -8,17 +8,12 @@
 
 #import "CLDevice.h"
 
-@interface CLDevice ()
-@property (readwrite) CLPlatform *platform;
-@property cl_device_id deviceId;
-@end
-
 @implementation CLDevice
 
 - (instancetype)initWithPlatform:(CLPlatform *)platform deviceId:(cl_device_id)device_id {
 	self = [super init];
-	self.platform = platform;
-	self.deviceId = device_id;
+	_platform = platform;
+	_deviceId = device_id;
 	return self;
 }
 
@@ -30,7 +25,7 @@
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"%@ %@", self.vendor, self.name];
+	return [NSString stringWithFormat:@"%@ (%@ %@)", [super description], self.vendor, self.name];
 }
 
 #pragma mark - Properties

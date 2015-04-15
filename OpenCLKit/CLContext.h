@@ -10,6 +10,7 @@
 @import OpenCL;
 
 @class CLDevice;
+@class CLCommandQueue;
 
 @interface CLContext : NSObject
 
@@ -18,5 +19,6 @@
 
 - (instancetype)initWithDevice:(CLDevice *)device;
 - (instancetype)initWithDevices:(NSArray *)devices NS_DESIGNATED_INITIALIZER;
+- (CLCommandQueue *)commandQueueForDevice:(CLDevice *)device;
 
 @end
