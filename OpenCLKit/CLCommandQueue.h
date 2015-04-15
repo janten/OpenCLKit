@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 @import OpenCL;
 
+@class CLKernel;
+
 @interface CLCommandQueue : NSObject
 
 @property (readonly) cl_command_queue commandQueue;
 
 - (instancetype)initWithCommandQueue:(cl_command_queue)queue NS_DESIGNATED_INITIALIZER;
+- (void)enqueueKernel:(CLKernel *)kernel globalDimensions:(NSArray *)globalDimensions;
 
 @end

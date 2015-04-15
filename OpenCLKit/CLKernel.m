@@ -8,10 +8,6 @@
 
 #import "CLKernel.h"
 
-@interface CLKernel ()
-@property cl_kernel kernel;
-@end
-
 @implementation CLKernel
 @synthesize name = _name;
 @synthesize arguments = _arguments;
@@ -33,7 +29,6 @@
 
 #pragma mark - Properties
 - (NSString *)name {
-
 	if (_name == nil) {
 		const int name_max = 1024;
 		char name[name_max];
@@ -45,7 +40,6 @@
 }
 
 - (NSArray *)arguments {
-
 	if (_arguments == nil) {
 		cl_uint args_count;
 		clGetKernelInfo(self.kernel, CL_KERNEL_NUM_ARGS, sizeof(args_count), &args_count, NULL);
@@ -64,5 +58,7 @@
 	
 	return _arguments;
 }
+
+
 
 @end

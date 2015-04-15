@@ -8,6 +8,7 @@
 
 #import "CLCommandQueue.h"
 #import "CLDevice.h"
+#import "CLKernel.h"
 
 @implementation CLCommandQueue
 
@@ -20,5 +21,25 @@
 - (void)dealloc {
 	clReleaseCommandQueue(self.commandQueue);
 }
+
+- (void)enqueueKernel:(CLKernel *)kernel globalDimensions:(NSArray *)globalDimensions {
+	size_t global_size[] = {0, 0, 0};
+	
+	for (NSUInteger i = 0; i < globalDimensions.count; i++) {
+		NSNumber *dimension = globalDimensions[i];
+		global_size[i] = [dimension longLongValue];
+	}
+	
+	clEnqueueNDRangeKernel(self.commandQueue,
+						   kernel.kernel,
+						   (cl_uint)globalDimensions.count,
+						   NULL,
+						   global_size,
+						   NULL,
+						   0,
+						   NULL,
+						   NULL);
+}
+
 
 @end
