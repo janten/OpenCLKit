@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Jan-Gerd Tenberge. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 @import OpenCL;
 
 @class CLContext;
@@ -22,5 +22,6 @@
 - (instancetype)initWithContext:(CLContext *)context URL:(NSURL *)URL;
 - (NSString *)buildLogForDevice:(CLDevice *)device;
 - (cl_build_status)buildStatusForDevice:(CLDevice *)device;
+- (CLKernel *)kernelNamed:(NSString *)name;
 
 @end

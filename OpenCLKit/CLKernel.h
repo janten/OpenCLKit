@@ -6,10 +6,11 @@
 //  Copyright (c) 2015 Jan-Gerd Tenberge. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 @import OpenCL;
 
 @class CLProgram;
+@class CLKernelArgument;
 
 @interface CLKernel : NSObject
 
@@ -19,5 +20,6 @@
 @property (readonly) NSArray *arguments;
 
 - (instancetype)initWithProgram:(CLProgram *)program kernel:(cl_kernel)kernel NS_DESIGNATED_INITIALIZER;
+- (CLKernelArgument *)argumentNamed:(NSString *)name;
 
 @end

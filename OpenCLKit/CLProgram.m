@@ -11,6 +11,7 @@
 #import "CLDevice.h"
 #import "CLCommandQueue.h"
 #import "CLKernel.h"
+#import "CLUtilities.h"
 
 @interface CLProgram ()
 
@@ -30,9 +31,9 @@
 	const char *source_code = source.UTF8String;
 	cl_int error = CL_SUCCESS;
 	self.program = clCreateProgramWithSource(self.context.context, 1, &source_code, NULL, &error);
-
+	[CLUtilities checkError:error message:@"Create program"];
+	
 	if (error != CL_SUCCESS) {
-		NSLog(@"Could not create program: %d", error);
 		return nil;
 	}
 	
@@ -74,11 +75,19 @@
 	return [NSString stringWithUTF8String:build_log];
 }
 
+- (CLKernel *)kernelNamed:(NSString *)name {
+	for (CLKernel *kernel in self.kernels) {
+		if ([kernel.name isEqualToString:name]) {
+			return kernel;
+		}
+	}
+	
+	return nil;
+}
+
 #pragma mark - Properties
 - (NSArray *)kernelNames {
-	static dispatch_once_t onceToken;
-
-	dispatch_once(&onceToken, ^{
+	if (_kernelNames == nil) {
 		const int kernel_names_max = 2048;
 		char kernel_names[kernel_names_max];
 		clGetProgramInfo(self.program, CL_PROGRAM_KERNEL_NAMES, kernel_names_max, kernel_names, NULL);
@@ -93,15 +102,13 @@
 		}
 		
 		_kernelNames = [NSArray arrayWithArray:kernelNames];
-	});
+	}
 	
 	return _kernelNames;
 }
 
 - (NSArray *)kernels {
-	static dispatch_once_t onceToken;
-
-	dispatch_once(&onceToken, ^{
+	if (_kernels == nil) {
 		NSMutableArray *kernels = [NSMutableArray arrayWithCapacity:self.kernelNames.count];
 		cl_int error = CL_SUCCESS;
 		
@@ -116,7 +123,7 @@
 		}
 
 		_kernels = [NSArray arrayWithArray:kernels];
-	});
+	}
 	
 	return _kernels;
 }

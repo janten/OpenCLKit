@@ -21,6 +21,10 @@
 		EE15F7571ADD3B6600297BE8 /* CLDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = EE15F7551ADD3B6600297BE8 /* CLDevice.m */; };
 		EE15F7711ADE921F00297BE8 /* CLCommandQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = EE15F76F1ADE921F00297BE8 /* CLCommandQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE15F7721ADE921F00297BE8 /* CLCommandQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = EE15F7701ADE921F00297BE8 /* CLCommandQueue.m */; };
+		EE6241A71ADFEF62004942F4 /* CLKernelArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = EE6241A51ADFEF62004942F4 /* CLKernelArgument.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE6241A81ADFEF62004942F4 /* CLKernelArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6241A61ADFEF62004942F4 /* CLKernelArgument.m */; };
+		EE6241AB1AE01523004942F4 /* CLUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = EE6241A91AE01523004942F4 /* CLUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE6241AC1AE01523004942F4 /* CLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6241AA1AE01523004942F4 /* CLUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +44,10 @@
 		EE15F7551ADD3B6600297BE8 /* CLDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLDevice.m; sourceTree = "<group>"; };
 		EE15F76F1ADE921F00297BE8 /* CLCommandQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCommandQueue.h; sourceTree = "<group>"; };
 		EE15F7701ADE921F00297BE8 /* CLCommandQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCommandQueue.m; sourceTree = "<group>"; };
+		EE6241A51ADFEF62004942F4 /* CLKernelArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLKernelArgument.h; sourceTree = "<group>"; };
+		EE6241A61ADFEF62004942F4 /* CLKernelArgument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLKernelArgument.m; sourceTree = "<group>"; };
+		EE6241A91AE01523004942F4 /* CLUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLUtilities.h; sourceTree = "<group>"; };
+		EE6241AA1AE01523004942F4 /* CLUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLUtilities.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,10 +90,14 @@
 				EE15F7551ADD3B6600297BE8 /* CLDevice.m */,
 				EE15F7481ADD2CAF00297BE8 /* CLKernel.h */,
 				EE15F7491ADD2CAF00297BE8 /* CLKernel.m */,
+				EE6241A51ADFEF62004942F4 /* CLKernelArgument.h */,
+				EE6241A61ADFEF62004942F4 /* CLKernelArgument.m */,
 				EE15F7501ADD2D9B00297BE8 /* CLPlatform.h */,
 				EE15F7511ADD2D9B00297BE8 /* CLPlatform.m */,
 				EE15F7421ADD2C1700297BE8 /* CLProgram.h */,
 				EE15F7431ADD2C1700297BE8 /* CLProgram.m */,
+				EE6241A91AE01523004942F4 /* CLUtilities.h */,
+				EE6241AA1AE01523004942F4 /* CLUtilities.m */,
 				EE15F72B1ADD2BB500297BE8 /* OpenCLKit.h */,
 				EE15F7291ADD2BB500297BE8 /* Supporting Files */,
 			);
@@ -118,7 +130,9 @@
 				EE15F7711ADE921F00297BE8 /* CLCommandQueue.h in Headers */,
 				EE15F7441ADD2C1700297BE8 /* CLProgram.h in Headers */,
 				EE15F7521ADD2D9B00297BE8 /* CLPlatform.h in Headers */,
+				EE6241A71ADFEF62004942F4 /* CLKernelArgument.h in Headers */,
 				EE15F74E1ADD2CD000297BE8 /* CLContext.h in Headers */,
+				EE6241AB1AE01523004942F4 /* CLUtilities.h in Headers */,
 				EE15F7561ADD3B6600297BE8 /* CLDevice.h in Headers */,
 				EE15F74A1ADD2CAF00297BE8 /* CLKernel.h in Headers */,
 				EE15F72C1ADD2BB500297BE8 /* OpenCLKit.h in Headers */,
@@ -195,8 +209,10 @@
 				EE15F7721ADE921F00297BE8 /* CLCommandQueue.m in Sources */,
 				EE15F74F1ADD2CD000297BE8 /* CLContext.m in Sources */,
 				EE15F7451ADD2C1700297BE8 /* CLProgram.m in Sources */,
+				EE6241AC1AE01523004942F4 /* CLUtilities.m in Sources */,
 				EE15F74B1ADD2CAF00297BE8 /* CLKernel.m in Sources */,
 				EE15F7571ADD3B6600297BE8 /* CLDevice.m in Sources */,
+				EE6241A81ADFEF62004942F4 /* CLKernelArgument.m in Sources */,
 				EE15F7531ADD2D9B00297BE8 /* CLPlatform.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

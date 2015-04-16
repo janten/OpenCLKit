@@ -18,5 +18,7 @@ FOUNDATION_EXPORT const unsigned char OpenCLKitVersionString[];
 #import <OpenCLKit/CLContext.h>
 #import <OpenCLKit/CLDevice.h>
 #import <OpenCLKit/CLKernel.h>
+#import <OpenCLKit/CLKernelArgument.h>
 #import <OpenCLKit/CLPlatform.h>
 #import <OpenCLKit/CLProgram.h>
+#import <OpenCLKit/CLUtilities.h>

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Jan-Gerd Tenberge. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 @import OpenCL;
 
 @class CLContext;

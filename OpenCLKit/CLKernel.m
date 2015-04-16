@@ -7,6 +7,7 @@
 //
 
 #import "CLKernel.h"
+#import "CLKernelArgument.h"
 
 @implementation CLKernel
 @synthesize name = _name;
@@ -25,6 +26,16 @@
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"%@ (%@)", [super description], self.name];
+}
+
+- (CLKernelArgument *)argumentNamed:(NSString *)name {
+	for (CLKernelArgument *argument in self.arguments) {
+		if ([argument.name isEqualToString:name]) {
+			return argument;
+		}
+	}
+	
+	return nil;
 }
 
 #pragma mark - Properties
@@ -46,11 +57,9 @@
 		NSMutableArray *arguments = [NSMutableArray arrayWithCapacity:args_count];
 		
 		for (cl_uint i = 0; i < args_count; i++) {
-			const int arg_name_max = 1024;
-			char arg_name[arg_name_max];
-			clGetKernelArgInfo(self.kernel, i, CL_KERNEL_ARG_NAME, arg_name_max, arg_name, NULL);
-			NSString *argumentName = [NSString stringWithUTF8String:arg_name];
-			[arguments addObject:argumentName];
+			CLKernelArgument *argument = [[CLKernelArgument alloc] initWithKernel:self
+																	argumentIndex:i];
+			[arguments addObject:argument];
 		}
 		
 		_arguments = [NSArray arrayWithArray:arguments];
