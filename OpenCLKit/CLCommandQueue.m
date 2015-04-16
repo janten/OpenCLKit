@@ -25,14 +25,12 @@
 }
 
 - (void)enqueueKernel:(CLKernel *)kernel globalDimensions:(NSArray *)globalDimensions {
-	size_t global_size[] = {0, 0, 0};
+	[self enqueueKernel:kernel globalDimensions:globalDimensions localDimensions:nil];
+}
+
+- (void)enqueueKernel:(CLKernel *)kernel globalDimensions:(NSArray *)globalDimensions localDimensions:(NSArray *)localDimensions {
 	cl_int error;
-	
-	for (NSUInteger i = 0; i < globalDimensions.count; i++) {
-		NSNumber *dimension = globalDimensions[i];
-		global_size[i] = [dimension longLongValue];
-	}
-	
+
 	for (CLKernelArgument *argument in kernel.arguments) {
 		cl_mem buffer = argument.buffer;
 		error = clEnqueueWriteBuffer(self.commandQueue,
@@ -49,13 +47,32 @@
 		NSString *message = [NSString stringWithFormat:@"Set argument %@", argument];
 		[CLUtilities checkError:error message:message];
 	}
+
+	size_t global_size[] = {0, 0, 0};
+	size_t *local_size = NULL;
+	
+	for (NSUInteger i = 0; i < globalDimensions.count; i++) {
+		NSNumber *dimension = globalDimensions[i];
+		global_size[i] = [dimension longLongValue];
+	}
+
+	if (localDimensions != nil) {
+		size_t size[] = {0, 0, 0};
+
+		for (NSUInteger i = 0; i < localDimensions.count; i++) {
+			NSNumber *dimension = localDimensions[i];
+			size[i] = [dimension longLongValue];
+		}
+		
+		local_size = size;
+	}
 	
 	error = clEnqueueNDRangeKernel(self.commandQueue,
 								   kernel.kernel,
 								   (cl_uint)globalDimensions.count,
 								   NULL,
 								   global_size,
-								   NULL,
+								   local_size,
 								   0,
 								   NULL,
 								   NULL);

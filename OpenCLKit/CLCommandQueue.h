@@ -18,6 +18,7 @@
 
 - (instancetype)initWithCommandQueue:(cl_command_queue)queue NS_DESIGNATED_INITIALIZER;
 - (void)enqueueKernel:(CLKernel *)kernel globalDimensions:(NSArray *)globalDimensions;
+- (void)enqueueKernel:(CLKernel *)kernel globalDimensions:(NSArray *)globalDimensions localDimensions:(NSArray *)localDimensions;
 - (void)readDataForArgument:(CLKernelArgument *)argument;
 
 @end

@@ -14,8 +14,9 @@
 	if (error == CL_SUCCESS) {
 		return;
 	}
-	
-	NSLog(@"%@: %d (%@)", message, error, [self nameOfError:error]);
+
+	NSLog(@"%@", message);
+	NSAssert(error == CL_SUCCESS, @"OpenCL error %d (%@)", error, [self nameOfError:error]);
 }
 
 + (NSString *)nameOfError:(cl_int)error {

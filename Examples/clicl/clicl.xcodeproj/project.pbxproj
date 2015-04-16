@@ -20,6 +20,13 @@
 			remoteGlobalIDString = EE15F7261ADD2BB500297BE8;
 			remoteInfo = OpenCLKit;
 		};
+		EE6241B41AE01D28004942F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE6241AD1AE01B1A004942F4 /* OpenCLKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EE15F7251ADD2BB500297BE8;
+			remoteInfo = OpenCLKit;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -110,6 +117,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				EE6241B51AE01D28004942F4 /* PBXTargetDependency */,
 			);
 			name = clicl;
 			productName = clicl;
@@ -173,6 +181,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EE6241B51AE01D28004942F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OpenCLKit;
+			targetProxy = EE6241B41AE01D28004942F4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		EE15F7661ADD43E400297BE8 /* Debug */ = {
