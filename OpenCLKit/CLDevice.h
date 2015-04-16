@@ -22,6 +22,16 @@
 @property (readonly) NSString *vendor;
 @property (readonly) NSString *version;
 
+/**
+ *  Initialize a CLDevice instance for the given device_id on the given 
+ *  platform. You should not call this method directly. Use [CLPlatform 
+ *  devicesOfType:] instead.
+ *
+ *  @param platform  The platform with which the device is associated.
+ *  @param device_id The opaque device identifier.
+ *
+ *  @return A CLDevice object.
+ */
 - (instancetype)initWithPlatform:(CLPlatform *)platform deviceId:(cl_device_id)device_id NS_DESIGNATED_INITIALIZER;
 
 @end

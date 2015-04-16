@@ -9,6 +9,7 @@
 #import "CLContext.h"
 #import "CLDevice.h"
 #import "CLCommandQueue.h"
+#import "CLUtilities.h"
 
 @interface CLContext ()
 @property (readwrite) NSArray *devices;
@@ -37,7 +38,8 @@
 
 	cl_command_queue *queues = malloc(sizeof(cl_command_queue) * devices.count);
 	cl_context context;
-	clCreateContextAndCommandQueueAPPLE(NULL, (cl_uint)devices.count, device_ids, NULL, NULL, 0, &context, queues);
+	cl_int error = clCreateContextAndCommandQueueAPPLE(NULL, (cl_uint)devices.count, device_ids, NULL, NULL, 0, &context, queues);
+	[CLUtilities checkError:error message:@"Create context and command queues"];
 	_context = context;
 	free(device_ids);
 	NSMutableArray *commandQueues = [NSMutableArray arrayWithCapacity:devices.count];
