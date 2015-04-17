@@ -7,7 +7,7 @@ How To
 Using OpenCLKit is straightforward if you have worked with OpenCL before. There 
 is a small commented sample program in the `Examples` folder. A minimal example
 looks like this:
-```
+```ObjC
 // Find the GPU
 CLPlatform *platform = [CLPlatform platforms].firstObject;
 CLDevice *GPUDevice = [platform devicesOfType:CL_DEVICE_TYPE_GPU].firstObject;
@@ -26,5 +26,7 @@ NSArray *dimensions = @[@(vectorSize)];
 [commandQueue enqueueKernel:program.kernels.firstObject globalDimensions:dimensions];
 
 // Get results
-[commandQueue readDataForArgument:outputArgument];
+[commandQueue readDataForArgument:arg];
+
+// Results are now in arg.data
 ```
