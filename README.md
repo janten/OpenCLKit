@@ -23,7 +23,7 @@ CLKernelArgument *arg = [kernel argumentNamed:@"vec_a"]
 arg.data = <#Some NSData instance#>;
 CLCommandQueue *commandQueue = [context commandQueueForDevice:GPUDevice];
 NSArray *dimensions = @[@(vectorSize)];
-[commandQueue enqueueKernel:program.kernels.firstObject globalDimensions:dimensions];
+[commandQueue enqueueKernel:kernel globalDimensions:dimensions];
 
 // Get results
 [commandQueue readDataForArgument:arg];
