@@ -19,6 +19,13 @@
 @property (readonly) cl_kernel_arg_address_qualifier addressQualifier;
 @property (readonly) cl_kernel_arg_type_qualifier typeQualifier;
 @property (readonly) CLKernel *kernel;
+
+/**
+ *  The actual data bound to this argument. Must be a NSMutableData instance if
+ *  the associated kernel should write data back here. You need to call
+ *  [CLCommandQueue readDataForArgument:] before reading result data. Content of
+ *  this object will be available as a global void* in the kernel.
+ */
 @property NSData *data;
 @property (readonly) NSString *typeName;
 @property (readonly) NSString *name;

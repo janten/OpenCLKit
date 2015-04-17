@@ -11,7 +11,16 @@
 
 @interface CLUtilities : NSObject
 
+/**
+ *  Asserts that the given error is CL_SUCCESS. Logs the given error message as
+ *  well as the error code and name before triggering the assertion if an error
+ *  occured.
+ *
+ *  @param error   The OpenCL error code
+ *  @param message An error message to display if code != CL_SUCCESS.
+ */
 + (void)checkError:(cl_int)error message:(NSString *)message;
+
 + (NSString *)nameOfError:(cl_int)error;
 + (NSDictionary *)errorNames;
 

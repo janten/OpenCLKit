@@ -30,14 +30,14 @@ int main(int argc, const char * argv[]) {
 		// Load our OpenCL source code from a file and create an OpenCL program
 		// from it. This will implicitly compile the program and create the
 		// kernels.
-		NSURL *sourceURL = [NSURL fileURLWithPath:@"/Users/janten/Desktop/test.cl"];
+		NSURL *sourceURL = [NSURL fileURLWithPath:@"test.cl"];
 		CLProgram *program = [[CLProgram alloc] initWithContext:context
 															URL:sourceURL];
-
+		
 		// A program consists of one or more kernels. While we can get a list of
 		// all kernels of a program through its kernels property, we can also
 		// access a kernel by its name.
-		CLKernel *kernel = [program kernelNamed:@"vector_add_gpu"];
+		CLKernel *kernel = [program kernelNamed:@"vector_add"];
 		
 		// Get the kernel arguments. All arguments need to be passed explicitly
 		// before the kernel can be run. Arguments can be accessed by name or
@@ -68,12 +68,12 @@ int main(int argc, const char * argv[]) {
 		NSData *inputVectorA = [NSData dataWithBytesNoCopy:input_vector_a
 												   length:vector_length
 											 freeWhenDone:YES];
-		[kernel argumentNamed:@"src_a"].data = inputVectorA;
+		[kernel argumentNamed:@"vec_a"].data = inputVectorA;
 
 		NSData *inputVectorB = [NSData dataWithBytesNoCopy:input_vector_b
 													length:vector_length
 											  freeWhenDone:YES];
-		[kernel argumentNamed:@"src_b"].data = inputVectorB;
+		[kernel argumentNamed:@"vec_b"].data = inputVectorB;
 
 		// Since we want to write data back to our output vector, it must be of
 		// the mutable subclass of NSData, NSMutableData.

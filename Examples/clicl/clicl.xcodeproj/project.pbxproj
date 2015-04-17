@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EE15F7651ADD43E400297BE8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE15F7641ADD43E400297BE8 /* main.m */; };
+		EE3728731AE153EA00E31CA9 /* test.cl in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE3728711AE153C100E31CA9 /* test.cl */; };
 		EE6241B31AE01B30004942F4 /* OpenCLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6241B21AE01B1A004942F4 /* OpenCLKit.framework */; };
 		EE8EB5051ADEA643009DC9C6 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8EB5041ADEA643009DC9C6 /* OpenCL.framework */; };
 /* End PBXBuildFile section */
@@ -34,8 +35,9 @@
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
 			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstSubfolderSpec = 16;
 			files = (
+				EE3728731AE153EA00E31CA9 /* test.cl in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +46,7 @@
 /* Begin PBXFileReference section */
 		EE15F7611ADD43E400297BE8 /* clicl */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = clicl; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE15F7641ADD43E400297BE8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EE3728711AE153C100E31CA9 /* test.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; path = test.cl; sourceTree = "<group>"; };
 		EE6241AD1AE01B1A004942F4 /* OpenCLKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OpenCLKit.xcodeproj; path = ../../OpenCLKit.xcodeproj; sourceTree = "<group>"; };
 		EE8EB5041ADEA643009DC9C6 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -82,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				EE15F7641ADD43E400297BE8 /* main.m */,
+				EE3728711AE153C100E31CA9 /* test.cl */,
 			);
 			path = clicl;
 			sourceTree = "<group>";

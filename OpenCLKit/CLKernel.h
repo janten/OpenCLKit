@@ -20,6 +20,15 @@
 @property (readonly) NSArray *arguments;
 
 - (instancetype)initWithProgram:(CLProgram *)program kernel:(cl_kernel)kernel NS_DESIGNATED_INITIALIZER;
+
+/**
+ *  Get the argument with the given name.
+ *
+ *  @param name The argument name. Does not include type or qualifiers.
+ *
+ *  @return An argument instance. Calling this method repeatedly will return the
+ *  same instance each time.
+ */
 - (CLKernelArgument *)argumentNamed:(NSString *)name;
 
 @end
