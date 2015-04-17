@@ -14,15 +14,15 @@ CLDevice *GPUDevice = [platform devicesOfType:CL_DEVICE_TYPE_GPU].firstObject;
 
 // Compile our OpenCL C source code
 CLContext *context = [[CLContext alloc] initWithDevice:GPUDevice];
-NSURL *sourceURL = [NSURL fileURLWithPath:@"<#Path to source code#>"];
+NSURL *sourceURL = [NSURL fileURLWithPath:@"<#path to source code#>"];
 CLProgram *program = [[CLProgram alloc] initWithContext:context URL:sourceURL];
 
 // Set kernel arguments and run
-CLKernel *kernel = [program kernelNamed:@"vector_add"];
-CLKernelArgument *arg = [kernel argumentNamed:@"vec_a"]
-arg.data = <#Some NSData instance#>;
+CLKernel *kernel = [program kernelNamed:@"<#kernel name#>"];
+CLKernelArgument *arg = [kernel argumentNamed:@"<#argument name#>"]
+arg.data = <#NSMutableData instance#>;
 CLCommandQueue *commandQueue = [context commandQueueForDevice:GPUDevice];
-NSArray *dimensions = @[@(vectorSize)];
+NSArray *dimensions = @[@(1024), @(1024)];
 [commandQueue enqueueKernel:kernel globalDimensions:dimensions];
 
 // Get results
