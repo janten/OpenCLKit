@@ -1,6 +1,6 @@
 OpenCLKit
 =========
-OpenCLKit is a Objective-C wrapper around the OpenCL C interface.
+OpenCLKit is a Objective-C wrapper around the OpenCL C interface. This Mac OS X framework is being developed as part of my PhD thesis on parallel algorithms in medical imaging.
 
 How To
 ------
@@ -30,3 +30,7 @@ NSArray *dimensions = @[@(vectorSize)];
 
 // Results are now in arg.data
 ```
+
+Limitations
+-----------
+There is only some basic functionality at the moment. Kernels taking constant values are currently not supported, neither are image data types or events. If you want to rely on OpenCLKit in your own applications, you will almost certainly need to add some functionality before being able to use it. Pull requests and issues are alway welcome.
