@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		EE3728771AE15E2700E31CA9 /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = EE37287A1AE15E2700E31CA9 /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				EE37287B1AE15E2D00E31CA9 /* Run Script */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		EE15F72C1ADD2BB500297BE8 /* OpenCLKit.h in Headers */ = {isa = PBXBuildFile; fileRef = EE15F72B1ADD2BB500297BE8 /* OpenCLKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE15F7441ADD2C1700297BE8 /* CLProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = EE15F7421ADD2C1700297BE8 /* CLProgram.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -172,6 +186,9 @@
 					EE15F7251ADD2BB500297BE8 = {
 						CreatedOnToolsVersion = 6.3;
 					};
+					EE3728771AE15E2700E31CA9 = {
+						CreatedOnToolsVersion = 6.3;
+					};
 				};
 			};
 			buildConfigurationList = EE15F7201ADD2BB500297BE8 /* Build configuration list for PBXProject "OpenCLKit" */;
@@ -187,6 +204,7 @@
 			projectRoot = "";
 			targets = (
 				EE15F7251ADD2BB500297BE8 /* OpenCLKit */,
+				EE3728771AE15E2700E31CA9 /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -200,6 +218,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EE37287B1AE15E2D00E31CA9 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -e /usr/local/bin/appledoc ]\nthen\n    /usr/local/bin/appledoc \\\n    --project-name \"${PROJECT_NAME}\" \\\n    --project-company \"Jan-Gerd Tenberge\" \\\n    --company-id \"com.jan-gerd\" \\\n    --output \"/tmp/${PROJECT_NAME}\" \\\n    --install-docset \\\n    --logformat xcode \\\n    --keep-undocumented-objects \\\n    --keep-undocumented-members \\\n    --keep-intermediate-files \\\n    --no-repeat-first-par \\\n    --no-warn-invalid-crossref \\\n    --merge-categories \\\n    --exit-threshold 2 \\\n    --docset-platform-family appledoc \\\n    --ignore \"*.m\" \\\n    --index-desc \"${PROJECT_DIR}/README.md\" \\\n    \"${PROJECT_DIR}/${PROJECT_NAME}\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EE15F7211ADD2BB500297BE8 /* Sources */ = {
@@ -335,6 +370,20 @@
 			};
 			name = Release;
 		};
+		EE3728781AE15E2700E31CA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EE3728791AE15E2700E31CA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -355,6 +404,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		EE37287A1AE15E2700E31CA9 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE3728781AE15E2700E31CA9 /* Debug */,
+				EE3728791AE15E2700E31CA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
