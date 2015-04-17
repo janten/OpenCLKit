@@ -31,6 +31,10 @@ NSArray *dimensions = @[@(vectorSize)];
 // Results are now in arg.data
 ```
 
+Documentation
+-------------
+If [appledoc](https://github.com/tomaz/appledoc) is installed on your system in `/usr/local/bin/appledoc` you can use the `Documentation` build target to create a docset from the header files and install them for Xcode to use. Documentation is largely incomplete but should cover the most important bits to get started.
+
 Limitations
 -----------
 There is only some basic functionality at the moment. Kernels taking constant values are currently not supported, neither are image data types or events. If you want to rely on OpenCLKit in your own applications, you will almost certainly need to add some functionality before being able to use it. Pull requests and issues are alway welcome.
