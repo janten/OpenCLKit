@@ -11,16 +11,22 @@
 #import "CLKernel.h"
 #import "CLKernelArgument.h"
 #import "CLUtilities.h"
+#import "CLContext.h"
 
 @implementation CLCommandQueue
 
-- (instancetype)initWithCommandQueue:(cl_command_queue)queue {
+- (instancetype)initWithDevice:(CLDevice *)device context:(CLContext *)context {
 	self = [super init];
-	_commandQueue = queue;
+	cl_int error = CL_SUCCESS;
+	_commandQueue = clCreateCommandQueue(context.context, device.deviceId, 0, &error);
+	_device = device;
+	_context = context;
+	[CLUtilities checkError:error message:@"Create command queue"];
 	return self;
 }
 
 - (void)dealloc {
+	NSLog(@"Dealloc: %@", [self description]);
 	clReleaseCommandQueue(self.commandQueue);
 }
 

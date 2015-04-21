@@ -15,7 +15,7 @@
 
 @interface CLProgram : NSObject
 
-@property (readonly) CLContext *context;
+@property (readonly, weak) CLContext *context;
 @property (readonly) NSArray *kernels;
 
 /**

@@ -15,7 +15,7 @@
 @interface CLKernel : NSObject
 
 @property (readonly) cl_kernel kernel;
-@property (readonly) CLProgram *program;
+@property (readonly, weak) CLProgram *program;
 @property (readonly) NSString *name;
 @property (readonly) NSArray *arguments;
 

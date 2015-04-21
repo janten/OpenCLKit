@@ -28,6 +28,7 @@
 }
 
 - (void)dealloc {
+	NSLog(@"Dealloc: %@", [self description]);
 	clReleaseMemObject(self.buffer);
 }
 

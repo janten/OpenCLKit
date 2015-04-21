@@ -9,14 +9,18 @@
 @import Foundation;
 @import OpenCL;
 
+@class CLContext;
+@class CLDevice;
 @class CLKernel;
 @class CLKernelArgument;
 
 @interface CLCommandQueue : NSObject
 
 @property (readonly) cl_command_queue commandQueue;
+@property (readonly, weak) CLDevice *device;
+@property (readonly, weak) CLContext *context;
 
-- (instancetype)initWithCommandQueue:(cl_command_queue)queue NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDevice:(CLDevice *)device context:(CLContext *)context NS_DESIGNATED_INITIALIZER;
 
 /**
  *  A convenience method for calling 

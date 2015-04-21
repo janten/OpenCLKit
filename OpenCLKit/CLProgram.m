@@ -38,7 +38,7 @@
 	}
 	
 	NSArray *devices = self.context.devices;
-	cl_device_id *device_ids = malloc(sizeof(cl_device_type) * devices.count);
+	cl_device_id *device_ids = malloc(sizeof(cl_device_id) * devices.count);
 	
 	for (NSUInteger i = 0; i < devices.count; i++) {
 		CLDevice *device = devices[i];
@@ -59,6 +59,7 @@
 }
 
 - (void)dealloc {
+	NSLog(@"Dealloc: %@", [self description]);
 	clReleaseProgram(self.program);
 }
 

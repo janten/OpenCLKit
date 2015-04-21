@@ -21,6 +21,7 @@
 }
 
 - (void)dealloc {
+	NSLog(@"Dealloc: %@", [self description]);
 	clReleaseKernel(self.kernel);
 }
 

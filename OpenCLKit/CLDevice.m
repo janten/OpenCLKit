@@ -28,6 +28,10 @@
 	return [NSString stringWithFormat:@"%@ (%@ %@)", [super description], self.vendor, self.name];
 }
 
+- (void)dealloc {
+	NSLog(@"Dealloc: %@", [self description]);
+}
+
 #pragma mark - Properties
 - (NSString *)name {
 	return [self deviceInfo:CL_DEVICE_NAME];

@@ -36,17 +36,16 @@
 		device_ids[i] = device.deviceId;
 	}
 
-	cl_command_queue *queues = malloc(sizeof(cl_command_queue) * devices.count);
-	cl_context context;
-	cl_int error = clCreateContextAndCommandQueueAPPLE(NULL, (cl_uint)devices.count, device_ids, NULL, NULL, 0, &context, queues);
+	cl_int error = CL_SUCCESS;
+	_context = clCreateContext(NULL, (cl_uint)devices.count, device_ids, NULL, NULL, &error);
 	[CLUtilities checkError:error message:@"Create context and command queues"];
-	_context = context;
 	free(device_ids);
 	NSMutableArray *commandQueues = [NSMutableArray arrayWithCapacity:devices.count];
 	
-	for (NSUInteger i = 0; i < devices.count; i++) {
-		CLCommandQueue *queue = [[CLCommandQueue alloc] initWithCommandQueue:queues[i]];
-		[commandQueues addObject:queue];
+	for (CLDevice *device in self.devices) {
+		CLCommandQueue *commandQueue = [[CLCommandQueue alloc] initWithDevice:device
+																	  context:self];
+		[commandQueues addObject:commandQueue];
 	}
 	
 	self.commandQueues = [NSArray arrayWithArray:commandQueues];
@@ -54,6 +53,7 @@
 }
 
 - (void)dealloc {
+	NSLog(@"Dealloc: %@", [self description]);
 	clReleaseContext(self.context);
 }
 
