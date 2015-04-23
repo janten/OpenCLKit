@@ -38,6 +38,10 @@
 	return self;
 }
 
+- (void)dealloc {
+	NSLog(@"Dealloc: %@", [self description]);
+}
+
 - (NSArray *)devices {
 	return [self devicesOfType:CL_DEVICE_TYPE_ALL];
 }

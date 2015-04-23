@@ -18,7 +18,7 @@
 
 @property (readonly) cl_command_queue commandQueue;
 @property (readonly) CLDevice *device;
-@property (readonly) CLContext *context;
+@property (readonly, weak) CLContext *context;
 
 - (instancetype)initWithDevice:(CLDevice *)device context:(CLContext *)context NS_DESIGNATED_INITIALIZER;
 
