@@ -10,6 +10,7 @@
 #import "CLDevice.h"
 #import "CLCommandQueue.h"
 #import "CLUtilities.h"
+#import "CLPlatform.h"
 
 @interface CLContext ()
 @property (readwrite) NSArray *devices;
@@ -37,7 +38,9 @@
 	}
 
 	cl_int error = CL_SUCCESS;
-	_context = clCreateContext(NULL, (cl_uint)devices.count, device_ids, NULL, NULL, &error);
+	CLDevice *firstDevice = devices.firstObject;
+	cl_context_properties properties[] = {CL_CONTEXT_PLATFORM, (cl_context_properties)firstDevice.platform.platformId, (cl_context_properties)0};
+	_context = clCreateContext(properties, (cl_uint)devices.count, device_ids, NULL, NULL, &error);
 	[CLUtilities checkError:error message:@"Create context and command queues"];
 	free(device_ids);
 	NSMutableArray *commandQueues = [NSMutableArray arrayWithCapacity:devices.count];

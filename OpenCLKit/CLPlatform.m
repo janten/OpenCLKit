@@ -11,7 +11,7 @@
 #import "CLContext.h"
 
 @interface CLPlatform ()
-@property cl_platform_id platformId;
+@property (readwrite) cl_platform_id platformId;
 @end
 
 @implementation CLPlatform

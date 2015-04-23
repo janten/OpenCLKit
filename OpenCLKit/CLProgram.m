@@ -45,7 +45,8 @@
 		device_ids[i] = device.deviceId;
 	}
 
-	clBuildProgram(self.program, (cl_uint)devices.count, device_ids, "-cl-kernel-arg-info", NULL, NULL);
+	error = clBuildProgram(self.program, (cl_uint)devices.count, device_ids, "-cl-kernel-arg-info", NULL, NULL);
+	[CLUtilities checkError:error message:@"Build program"];
 	free(device_ids);
 	
 	return self;

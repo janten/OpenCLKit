@@ -18,7 +18,7 @@
 @property (readonly) cl_kernel_arg_access_qualifier accessQualifier;
 @property (readonly) cl_kernel_arg_address_qualifier addressQualifier;
 @property (readonly) cl_kernel_arg_type_qualifier typeQualifier;
-@property (readonly, weak) CLKernel *kernel;
+@property (readonly) CLKernel *kernel;
 
 /**
  *  The actual data bound to this argument. Must be a NSMutableData instance if

@@ -13,6 +13,7 @@
 
 @interface CLPlatform : NSObject
 
+@property (readonly) cl_platform_id platformId;
 @property (readonly) NSString *profile;
 @property (readonly) NSString *version;
 @property (readonly) NSString *name;

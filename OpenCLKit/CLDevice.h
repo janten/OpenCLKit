@@ -15,7 +15,7 @@
 
 @property (readonly) cl_device_id deviceId;
 @property (readonly) cl_device_type deviceType;
-@property (readonly, weak) CLPlatform *platform;
+@property (readonly) CLPlatform *platform;
 @property (readonly) NSArray *extensions;
 @property (readonly) NSString *driverVersion;
 @property (readonly) NSString *name;
