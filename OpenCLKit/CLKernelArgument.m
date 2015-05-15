@@ -11,10 +11,16 @@
 #import "CLProgram.h"
 #import "CLContext.h"
 #import "CLUtilities.h"
+#import "CLBuffer.h"
+
+@interface CLKernelArgument ()
+
+@property (readwrite, strong) CLBuffer *buffer;
+
+@end
 
 @implementation CLKernelArgument
-@synthesize buffer = _buffer;
-@synthesize data = _data;
+
 @synthesize index = _index;
 @synthesize kernel = _kernel;
 @synthesize name = _name;
@@ -29,7 +35,6 @@
 
 - (void)dealloc {
 	NSLog(@"Dealloc: %@", [self description]);
-	clReleaseMemObject(self.buffer);
 }
 
 - (NSString *)description {
@@ -92,6 +97,26 @@
 	return [NSString stringWithFormat:@"%@ (%@)", [super description], typeString];
 }
 
+#pragma mark - Value handling
+- (void)setValueWithBuffer:(CLBuffer *)buffer {
+    self.buffer = buffer;
+    cl_mem cl_buffer = self.buffer.buffer;
+    cl_int error = clSetKernelArg(self.kernel.kernel, self.index, sizeof(cl_mem), &cl_buffer);
+    [CLUtilities checkError:error message:@"Set kernel argument with buffer"];
+}
+
+- (void)setValueWithData:(NSData *)data {
+    CLBuffer *buffer = [[CLBuffer alloc] initWithContext:self.kernel.program.context
+                                                    data:data];
+    [self setValueWithBuffer:buffer];
+}
+
+- (void)setValueWithBytes:(const void *)value length:(NSUInteger)length {
+    self.buffer = nil;
+    cl_int error = clSetKernelArg(self.kernel.kernel, self.index, length, value);
+    [CLUtilities checkError:error message:@"Set kernel argument with bytes"];
+}
+
 #pragma mark - Properties
 - (cl_kernel_arg_access_qualifier)accessQualifier {
 	cl_kernel_arg_access_qualifier qualifier;
@@ -124,28 +149,6 @@
 					   &qualifier,
 					   NULL);
 	return qualifier;
-}
-
-- (void)setData:(NSData *)data {
-	clReleaseMemObject(self.buffer);
-	cl_mem_flags flags = CL_MEM_READ_ONLY;
-	
-	if ([data isKindOfClass:[NSMutableData class]]) {
-		flags = CL_MEM_READ_WRITE;
-	}
-	
-	cl_int error;
-	_buffer = clCreateBuffer(self.kernel.program.context.context,
-							 flags,
-							 data.length,
-							 NULL,
-							 &error);
-	[CLUtilities checkError:error message:@"Create buffer"];
-	_data = data;
-}
-
-- (NSData *)data {
-	return _data;
 }
 
 - (NSString *)typeName {

@@ -12,6 +12,7 @@
 #import "CLKernelArgument.h"
 #import "CLUtilities.h"
 #import "CLContext.h"
+#import "CLBuffer.h"
 
 @implementation CLCommandQueue
 
@@ -36,27 +37,23 @@
 
 - (void)enqueueKernel:(CLKernel *)kernel globalDimensions:(NSArray *)globalDimensions localDimensions:(NSArray *)localDimensions {
 	cl_int error;
-
-	for (CLKernelArgument *argument in kernel.arguments) {
-		cl_mem buffer = argument.buffer;
-		error = clEnqueueWriteBuffer(self.commandQueue,
-									 buffer,
-									 CL_FALSE,
-									 0,
-									 argument.data.length,
-									 argument.data.bytes,
-									 0,
-									 NULL,
-									 NULL);
-		[CLUtilities checkError:error message:@"Enqueue buffer"];
-		error = clSetKernelArg(kernel.kernel, argument.index, sizeof(cl_mem), &buffer);
-		NSString *message = [NSString stringWithFormat:@"Set argument %@", argument];
-		[CLUtilities checkError:error message:message];
-	}
-
 	size_t global_size[] = {0, 0, 0};
 	size_t *local_size = NULL;
 	
+    for (CLKernelArgument *argument in kernel.arguments) {
+        if (argument.buffer != nil) {
+            clEnqueueWriteBuffer(self.commandQueue,
+                                 argument.buffer.buffer,
+                                 CL_FALSE,
+                                 0,
+                                 argument.buffer.length,
+                                 argument.buffer.bytes,
+                                 0,
+                                 NULL,
+                                 NULL);
+        }
+    }
+    
 	for (NSUInteger i = 0; i < globalDimensions.count; i++) {
 		NSNumber *dimension = globalDimensions[i];
 		global_size[i] = [dimension longLongValue];
@@ -85,24 +82,20 @@
 	[CLUtilities checkError:error message:@"Enqueue kernel"];
 }
 
-- (void)readDataForArgument:(CLKernelArgument *)argument {
-	if (![argument.data isKindOfClass:[NSMutableData class]]) {
-		return;
-	}
-	
-	NSMutableData *data = (NSMutableData *)argument.data;
-	cl_mem buffer = argument.buffer;
+- (NSData *)dataFromBuffer:(CLBuffer *)buffer {
+	NSMutableData *data = [NSMutableData dataWithCapacity:buffer.length];
 	cl_int error = clEnqueueReadBuffer(self.commandQueue,
-									   buffer,
+									   buffer.buffer,
 									   CL_TRUE,
 									   0,
-									   data.length,
+									   buffer.length,
 									   data.mutableBytes,
 									   0,
 									   NULL,
 									   NULL);
-	NSString *message = [NSString stringWithFormat:@"Read data for %@", argument];
+	NSString *message = [NSString stringWithFormat:@"Read data for %@", buffer];
 	[CLUtilities checkError:error message:message];
+    return data;
 }
 
 @end

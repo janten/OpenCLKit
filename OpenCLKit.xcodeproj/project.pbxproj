@@ -39,6 +39,8 @@
 		EE6241A81ADFEF62004942F4 /* CLKernelArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6241A61ADFEF62004942F4 /* CLKernelArgument.m */; };
 		EE6241AB1AE01523004942F4 /* CLUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = EE6241A91AE01523004942F4 /* CLUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE6241AC1AE01523004942F4 /* CLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6241AA1AE01523004942F4 /* CLUtilities.m */; };
+		EEAE210F1B05512D00D1073E /* CLBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = EEAE210D1B05512D00D1073E /* CLBuffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EEAE21101B05512D00D1073E /* CLBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAE210E1B05512D00D1073E /* CLBuffer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		EE6241A61ADFEF62004942F4 /* CLKernelArgument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLKernelArgument.m; sourceTree = "<group>"; };
 		EE6241A91AE01523004942F4 /* CLUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLUtilities.h; sourceTree = "<group>"; };
 		EE6241AA1AE01523004942F4 /* CLUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLUtilities.m; sourceTree = "<group>"; };
+		EEAE210D1B05512D00D1073E /* CLBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBuffer.h; sourceTree = "<group>"; };
+		EEAE210E1B05512D00D1073E /* CLBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBuffer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 		EE15F7281ADD2BB500297BE8 /* OpenCLKit */ = {
 			isa = PBXGroup;
 			children = (
+				EEAE210D1B05512D00D1073E /* CLBuffer.h */,
+				EEAE210E1B05512D00D1073E /* CLBuffer.m */,
 				EE15F76F1ADE921F00297BE8 /* CLCommandQueue.h */,
 				EE15F7701ADE921F00297BE8 /* CLCommandQueue.m */,
 				EE15F74C1ADD2CD000297BE8 /* CLContext.h */,
@@ -144,6 +150,7 @@
 				EE15F7711ADE921F00297BE8 /* CLCommandQueue.h in Headers */,
 				EE15F7441ADD2C1700297BE8 /* CLProgram.h in Headers */,
 				EE15F7521ADD2D9B00297BE8 /* CLPlatform.h in Headers */,
+				EEAE210F1B05512D00D1073E /* CLBuffer.h in Headers */,
 				EE6241A71ADFEF62004942F4 /* CLKernelArgument.h in Headers */,
 				EE15F74E1ADD2CD000297BE8 /* CLContext.h in Headers */,
 				EE6241AB1AE01523004942F4 /* CLUtilities.h in Headers */,
@@ -232,7 +239,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ -e /usr/local/bin/appledoc ]\nthen\n    /usr/local/bin/appledoc \\\n    --project-name \"${PROJECT_NAME}\" \\\n    --project-company \"Jan-Gerd Tenberge\" \\\n    --company-id \"com.jan-gerd\" \\\n    --output \"/tmp/${PROJECT_NAME}\" \\\n    --install-docset \\\n    --logformat xcode \\\n    --keep-undocumented-objects \\\n    --keep-undocumented-members \\\n    --keep-intermediate-files \\\n    --no-repeat-first-par \\\n    --no-warn-invalid-crossref \\\n    --merge-categories \\\n    --exit-threshold 2 \\\n    --docset-platform-family appledoc \\\n    --ignore \"*.m\" \\\n    --index-desc \"${PROJECT_DIR}/README.md\" \\\n    \"${PROJECT_DIR}/${PROJECT_NAME}\"\nfi";
+			shellScript = "# Install with `brew install appledoc22`\n\n/usr/local/bin/appledoc \\\n--project-name \"${PROJECT_NAME}\" \\\n--project-company \"Jan-Gerd Tenberge\" \\\n--company-id \"com.jan-gerd\" \\\n--output \"/tmp/${PROJECT_NAME}\" \\\n--install-docset \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--merge-categories \\\n--exit-threshold 2 \\\n--docset-platform-family appledoc \\\n--ignore \"*.m\" \\\n--index-desc \"${PROJECT_DIR}/README.md\" \\\n\"${PROJECT_DIR}/${PROJECT_NAME}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -245,6 +252,7 @@
 				EE15F74F1ADD2CD000297BE8 /* CLContext.m in Sources */,
 				EE15F7451ADD2C1700297BE8 /* CLProgram.m in Sources */,
 				EE6241AC1AE01523004942F4 /* CLUtilities.m in Sources */,
+				EEAE21101B05512D00D1073E /* CLBuffer.m in Sources */,
 				EE15F74B1ADD2CAF00297BE8 /* CLKernel.m in Sources */,
 				EE15F7571ADD3B6600297BE8 /* CLDevice.m in Sources */,
 				EE6241A81ADFEF62004942F4 /* CLKernelArgument.m in Sources */,
@@ -412,6 +420,7 @@
 				EE3728791AE15E2700E31CA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

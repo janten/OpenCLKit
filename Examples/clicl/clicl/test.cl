@@ -1,4 +1,6 @@
-__kernel void vector_add (global const float *vec_a, global const float *vec_b, global float *res) {
+__kernel void vector_add (global float *vec_a,
+                          global float *vec_b,
+                          global float *res) {
 	const size_t idx = get_global_id(0);
 	res[idx] = vec_a[idx] + vec_b[idx];
 }

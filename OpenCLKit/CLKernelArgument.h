@@ -10,26 +10,23 @@
 @import OpenCL;
 
 @class CLKernel;
+@class CLBuffer;
 
 @interface CLKernelArgument : NSObject
 
-@property (readonly) cl_mem buffer;
+@property (readonly) CLBuffer *buffer;
 @property (readonly) cl_uint index;
 @property (readonly) cl_kernel_arg_access_qualifier accessQualifier;
 @property (readonly) cl_kernel_arg_address_qualifier addressQualifier;
 @property (readonly) cl_kernel_arg_type_qualifier typeQualifier;
 @property (readonly, weak) CLKernel *kernel;
-
-/**
- *  The actual data bound to this argument. Must be a NSMutableData instance if
- *  the associated kernel should write data back here. You need to call
- *  [CLCommandQueue readDataForArgument:] before reading result data. Content of
- *  this object will be available as a global void* in the kernel.
- */
-@property NSData *data;
 @property (readonly) NSString *typeName;
 @property (readonly) NSString *name;
 
 - (instancetype)initWithKernel:(CLKernel *)kernel argumentIndex:(cl_uint)index NS_DESIGNATED_INITIALIZER;
+
+- (void)setValueWithBuffer:(CLBuffer *)buffer;
+- (void)setValueWithData:(NSData *)data;
+- (void)setValueWithBytes:(const void *)value length:(NSUInteger)length;
 
 @end

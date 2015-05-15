@@ -22,3 +22,4 @@ FOUNDATION_EXPORT const unsigned char OpenCLKitVersionString[];
 #import <OpenCLKit/CLPlatform.h>
 #import <OpenCLKit/CLProgram.h>
 #import <OpenCLKit/CLUtilities.h>
+#import <OpenCLKit/CLBuffer.h>

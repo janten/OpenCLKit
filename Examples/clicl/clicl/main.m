@@ -56,7 +56,6 @@ int main(int argc, const char * argv[]) {
 		// for this example. Data would usually be read in from a file anyway.
 		cl_float *input_vector_a = malloc(vector_length);
 		cl_float *input_vector_b = malloc(vector_length);
-		cl_float *output_vector = malloc(vector_length);
 		srand48(arc4random());
 		
 		for (NSUInteger i = 0; i < vectorSize; i++) {
@@ -66,27 +65,19 @@ int main(int argc, const char * argv[]) {
 		
 		// For use with OpenCLKit, data must be wrapped in a NSData container.
 		NSData *inputVectorA = [NSData dataWithBytesNoCopy:input_vector_a
-												   length:vector_length
-											 freeWhenDone:YES];
-		[kernel argumentNamed:@"vec_a"].data = inputVectorA;
+                                                    length:vector_length
+                                              freeWhenDone:YES];
+        [[kernel argumentNamed:@"vec_a"] setValueWithData:inputVectorA];
 
 		NSData *inputVectorB = [NSData dataWithBytesNoCopy:input_vector_b
 													length:vector_length
 											  freeWhenDone:YES];
-		[kernel argumentNamed:@"vec_b"].data = inputVectorB;
-
-		// Since we want to write data back to our output vector, it must be of
-		// the mutable subclass of NSData, NSMutableData.
-		NSMutableData *outputVector = [NSMutableData dataWithBytesNoCopy:output_vector
-																  length:vector_length
-															freeWhenDone:YES];
-		CLKernelArgument *outputArgument = [kernel argumentNamed:@"res"];
-		outputArgument.data = outputVector;
-		
-		// Passing arguments is straightforward. This will however not copy the
-		// data to the device yet. Copying happens just in time right before the
-		// kernel is executed on the device.
-		[kernel argumentNamed:@"res"].data = outputVector;
+        [[kernel argumentNamed:@"vec_b"] setValueWithData:inputVectorB];
+        
+        // Create an empty output buffer for the results.
+        CLBuffer *outputBuffer = [[CLBuffer alloc] initWithContext:context
+                                                            length:vector_length];
+        [[kernel argumentNamed:@"res"] setValueWithBuffer:outputBuffer];
 		
 		// Get the command queue for our device. While a context can contain
 		// multiple devices, each device still has its own command queue. All
@@ -96,22 +87,24 @@ int main(int argc, const char * argv[]) {
 		CLCommandQueue *commandQueue = [context commandQueueForDevice:GPUDevice];
 
 		// Run our kernel one million times, OpenCL will automatically determine
-		// the parallelization.
+		// the parallelization. Enqueueing the kernel will also upload the
+        // values of its arguments to the device.
 		NSArray *dimensions = @[@(vectorSize)];
-		[commandQueue enqueueKernel:program.kernels.firstObject
+		[commandQueue enqueueKernel:kernel
 				   globalDimensions:dimensions];
 		
 		// Read the output data. This method will not return until all kernels
 		// in the queue have finished execution and data has been copied back to
 		// the arguments backing NSData object.
-		[commandQueue readDataForArgument:outputArgument];
+		NSData *outputData = [commandQueue dataFromBuffer:outputBuffer];
 		
 		// Output data should now be available. We will just print out every
 		// 10,000th entry of the vectors to check the sanity of our results.
 		for (NSUInteger i = 0; i < vectorSize; i += 10000) {
-			NSLog(@"%.2f + %.2f = %.2f", input_vector_a[i], input_vector_b[i], ((cl_float *)outputArgument.data.bytes)[i]);
+			NSLog(@"%.2f + %.2f = %.2f", input_vector_a[i], input_vector_b[i], ((cl_float *)outputData.bytes)[i]);
 		}
-	}
+
+    }
 	
     return 0;
 }

@@ -13,6 +13,7 @@
 @class CLDevice;
 @class CLKernel;
 @class CLKernelArgument;
+@class CLBuffer;
 
 @interface CLCommandQueue : NSObject
 
@@ -44,14 +45,12 @@
 - (void)enqueueKernel:(CLKernel *)kernel globalDimensions:(NSArray *)globalDimensions localDimensions:(NSArray *)localDimensions;
 
 /**
- *  Perform a blocking read of the data associated with the given argument. Will
+ *  Perform a blocking read of the data associated with the given buffer. Will
  *  block until all previously enqueued operations are finished and the data has
- *  been copied back to the arguments backing NSMutableData instance. It is an
- *  error to call this method with an CLKernelArgument backed by immutable data.
+ *  been copied back to the host.
  *
- *  @param argument The argument for which to fetch data from the compute
- *  device.
+ *  @param buffer The buffer for which to fetch data from the compute device.
  */
-- (void)readDataForArgument:(CLKernelArgument *)argument;
+- (NSData *)dataFromBuffer:(CLBuffer *)buffer;
 
 @end
