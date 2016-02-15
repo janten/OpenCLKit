@@ -18,6 +18,7 @@ appledoc \
 	--project-name "OpenCLKit" \
 	--project-company "Jan-Gerd Tenberge" \
 	--company-id com.jan-gerd \
+	--ignore .m \
 	-v "${VERSION}" \
 	--no-create-docset \
 	-h \
@@ -31,6 +32,7 @@ appledoc \
 	--docset-feed-url "https://janten.github.io/OpenCLKit/doc/feed.atom" \
 	--docset-package-url "https://janten.github.io/OpenCLKit/doc/%VERSION/OpenCLKit.xar" \
 	--docset-package-filename "OpenCLKit" \
+	--ignore .m \
 	-v "${VERSION}" \
 	--no-create-docset \
 	-u \
