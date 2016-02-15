@@ -205,7 +205,6 @@
 				EE15F7221ADD2BB500297BE8 /* Frameworks */,
 				EE15F7231ADD2BB500297BE8 /* Headers */,
 				EE15F7241ADD2BB500297BE8 /* Resources */,
-				EE06DC821C723C6800D553F6 /* Generate documentation */,
 			);
 			buildRules = (
 			);
@@ -291,20 +290,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		EE06DC821C723C6800D553F6 /* Generate documentation */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Generate documentation";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "VERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${INFOPLIST_FILE}\")\nexit 1\n# appledoc Xcode script\n# Start constants\ncompany=\"Jan-Gerd Tenberge\";\ncompanyID=\"com.jan-gerd\";\ndeployBaseURL=\"https://jan-gerd.com/static/docset\"\ndeployFilename=\"openclkit\"\n\n/usr/local/bin/appledoc \\\n--project-name \"${PROJECT_NAME}\" \\\n--project-company \"${company}\" \\\n--company-id \"${companyID}\" \\\n--docset-atom-filename \"${deployFilename}.atom\" \\\n--docset-feed-url \"${deployBaseURL}/${deployFilename}.atom\" \\\n--docset-package-url \"%DOCSETPACKAGEFILENAME\" \\\n--docset-fallback-url \"${deployBaseURL}\" \\\n--output \"${PROJECT_DIR}/documentation\" \\\n--publish-docset \\\n--docset-platform-family \"${PLATFORM_NAME}\" \\\n--logformat xcode \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--ignore \"*.m\" \\\n--exit-threshold 2 \\\n\"${PROJECT_DIR}\"";
-		};
 		EE37287B1AE15E2D00E31CA9 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -317,7 +302,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "";
+			shellScript = "INFOPLIST_FILE=\"OpenCLKit/Info.plist\"\nVERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${INFOPLIST_FILE}\")\n\nappledoc \\\n--project-name \"OpenCLKit\" \\\n--project-company \"Jan-Gerd Tenberge\" \\\n--company-id com.jan-gerd \\\n--docset-feed-url \"https://janten.github.io/OpenCLKit/doc/feed.atom\" \\\n--docset-package-url \"https://janten.github.io/OpenCLKit/doc/%VERSION/OpenCLKit.xar\" \\\n--docset-package-filename \"OpenCLKit\" \\\n-v \"${VERSION}\" \\\n--install-docset \\\n-o /tmp/xcode_ocl_doc \\\n${PROJECT_DIR}\n\nrm docset-installed.txt\nrm -rf \"/tmp/xcode_ocl_doc\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
