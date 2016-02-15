@@ -5,7 +5,7 @@
     <title>OpenCLKit by janten</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
@@ -20,46 +20,116 @@
 
     <section class="main-content">
       <h1>
-<a id="openclkit" class="anchor" href="#openclkit" aria-hidden="true"><span class="octicon octicon-link"></span></a>OpenCLKit</h1>
+<a id="openclkit" class="anchor" href="#openclkit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OpenCLKit</h1>
 
 <p>OpenCLKit is a Objective-C wrapper around the OpenCL C interface. This Mac OS X framework is being developed as part of my PhD thesis on parallel algorithms in medical imaging.</p>
 
 <h2>
-<a id="how-to" class="anchor" href="#how-to" aria-hidden="true"><span class="octicon octicon-link"></span></a>How To</h2>
+<a id="how-to" class="anchor" href="#how-to" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How To</h2>
 
 <p>Using OpenCLKit is straightforward if you have worked with OpenCL before. There 
-is a small commented sample program in the <code>Examples</code> folder. A minimal example
-looks like this:</p>
+is a small commented sample program in the <code>Examples</code> folder. The interesting part looks like this:</p>
 
-<div class="highlight highlight-ObjC"><pre><span class="pl-c">// Find the GPU</span>
+<div class="highlight highlight-source-objc"><pre><span class="pl-c">// Get the OpenCL platform. Multiple platforms may be availabe if more</span>
+<span class="pl-c">// than one OpenCL implementation is installed on this computer. The</span>
+<span class="pl-c">// same hardware device may also be availabe on multiple platforms.</span>
 CLPlatform *platform = [CLPlatform <span class="pl-c1">platforms</span>].firstObject;
+
+<span class="pl-c">// Find a computing device. We will just choose the first OpenCL</span>
+<span class="pl-c">// compatible GPU that we can find in the platform. Other available</span>
+<span class="pl-c">// options include CL_DEVICE_TYPE_CPU and CL_DEVICE_TYPE_ALL. Note that</span>
+<span class="pl-c">// we should usually check if we actually found a device before using it</span>
+<span class="pl-c">// but this (like all error handling) is skipped here for brevity.</span>
 CLDevice *GPUDevice = [platform <span class="pl-c1">devicesOfType:</span>CL_DEVICE_TYPE_GPU].firstObject;
 
-<span class="pl-c">// Compile our OpenCL C source code</span>
+<span class="pl-c">// Create a context for our device. Contexts spanning multiple devices</span>
+<span class="pl-c">// are also possible.</span>
 CLContext *context = [[CLContext <span class="pl-c1">alloc</span>] <span class="pl-c1">initWithDevice:</span>GPUDevice];
-<span class="pl-c1">NSURL</span> *sourceURL = [<span class="pl-c1">NSURL</span> <span class="pl-c1">fileURLWithPath:</span><span class="pl-s"><span class="pl-pds">@"</span>&lt;#Path to source code#&gt;<span class="pl-pds">"</span></span>];
+
+<span class="pl-c">// Load our OpenCL source code from a file and create an OpenCL program</span>
+<span class="pl-c">// from it. This will implicitly compile the program and create the</span>
+<span class="pl-c">// kernels.</span>
+<span class="pl-c1">NSURL</span> *sourceURL = [<span class="pl-c1">NSURL</span> <span class="pl-c1">fileURLWithPath:</span><span class="pl-s"><span class="pl-pds">@"</span>test.cl<span class="pl-pds">"</span></span>];
 CLProgram *program = [[CLProgram <span class="pl-c1">alloc</span>] <span class="pl-c1">initWithContext:</span>context <span class="pl-c1">URL:</span>sourceURL];
 
-<span class="pl-c">// Set kernel arguments and run</span>
+<span class="pl-c">// A program consists of one or more kernels. While we can get a list of</span>
+<span class="pl-c">// all kernels of a program through its kernels property, we can also</span>
+<span class="pl-c">// access a kernel by its name.</span>
 CLKernel *kernel = [program <span class="pl-c1">kernelNamed:</span><span class="pl-s"><span class="pl-pds">@"</span>vector_add<span class="pl-pds">"</span></span>];
-CLKernelArgument *arg = [kernel <span class="pl-c1">argumentNamed:</span><span class="pl-s"><span class="pl-pds">@"</span>vec_a<span class="pl-pds">"</span></span>]
-arg.data = &lt;#Some <span class="pl-c1">NSData</span> instance#&gt;;
+
+<span class="pl-c">// Get the kernel arguments. All arguments need to be passed explicitly</span>
+<span class="pl-c">// before the kernel can be run. Arguments can be accessed by name or</span>
+<span class="pl-c">// through the arguments property of the kernel. We will have a look at</span>
+<span class="pl-c">// all the arguments for our kernel.</span>
+<span class="pl-c1">NSLog</span>(<span class="pl-s"><span class="pl-pds">@"</span>Arguments: <span class="pl-c1">%@</span><span class="pl-pds">"</span></span>, kernel.arguments);
+
+<span class="pl-c">// Our kernel sums two vectors and writes the result to a third one.</span>
+<span class="pl-c">// The source and target vectors are just plain C arrays of floats and</span>
+<span class="pl-c">// must all be of the same size. Note that a float on the device is a</span>
+<span class="pl-c">// cl_float on the host.</span>
+<span class="pl-k">const</span> <span class="pl-k">NSUInteger</span> vectorSize = <span class="pl-c1">1e6</span>;
+<span class="pl-k">const</span> <span class="pl-c1">size_t</span> vector_length = <span class="pl-k">sizeof</span>(cl_float) * vectorSize;
+
+<span class="pl-c">// We just allocate enough memory and initialize it with random numbers</span>
+<span class="pl-c">// for this example. Data would usually be read in from a file anyway.</span>
+cl_float *input_vector_a = malloc(vector_length);
+cl_float *input_vector_b = malloc(vector_length);
+cl_float *output_vector = malloc(vector_length);
+<span class="pl-en">srand48</span>(arc4random());
+
+<span class="pl-k">for</span> (<span class="pl-k">NSUInteger</span> i = <span class="pl-c1">0</span>; i &lt; vectorSize; i++) {
+    input_vector_a[i] = <span class="pl-c1">drand48</span>();
+    input_vector_b[i] = <span class="pl-c1">drand48</span>();
+}
+
+<span class="pl-c">// For use with OpenCLKit, data must be wrapped in a NSData container.</span>
+<span class="pl-c1">NSData</span> *inputVectorA = [<span class="pl-c1">NSData</span> <span class="pl-c1">dataWithBytesNoCopy:</span>input_vector_a <span class="pl-c1">length:</span>vector_length <span class="pl-c1">freeWhenDone:</span><span class="pl-c1">YES</span>];
+[kernel <span class="pl-c1">argumentNamed:</span><span class="pl-s"><span class="pl-pds">@"</span>vec_a<span class="pl-pds">"</span></span>].data = inputVectorA;
+
+<span class="pl-c1">NSData</span> *inputVectorB = [<span class="pl-c1">NSData</span> <span class="pl-c1">dataWithBytesNoCopy:</span>input_vector_b <span class="pl-c1">length:</span>vector_length <span class="pl-c1">freeWhenDone:</span><span class="pl-c1">YES</span>];
+[kernel <span class="pl-c1">argumentNamed:</span><span class="pl-s"><span class="pl-pds">@"</span>vec_b<span class="pl-pds">"</span></span>].data = inputVectorB;
+
+<span class="pl-c">// Since we want to write data back to our output vector, it must be of</span>
+<span class="pl-c">// the mutable subclass of NSData, NSMutableData.</span>
+<span class="pl-c1">NSMutableData</span> *outputVector = [<span class="pl-c1">NSMutableData</span> <span class="pl-c1">dataWithBytesNoCopy:</span>output_vector <span class="pl-c1">length:</span>vector_length <span class="pl-c1">freeWhenDone:</span><span class="pl-c1">YES</span>];
+CLKernelArgument *outputArgument = [kernel <span class="pl-c1">argumentNamed:</span><span class="pl-s"><span class="pl-pds">@"</span>res<span class="pl-pds">"</span></span>];
+outputArgument.data = outputVector;
+
+<span class="pl-c">// Passing arguments is straightforward. This will however not copy the</span>
+<span class="pl-c">// data to the device yet. Copying happens just in time right before the</span>
+<span class="pl-c">// kernel is executed on the device.</span>
+[kernel <span class="pl-c1">argumentNamed:</span><span class="pl-s"><span class="pl-pds">@"</span>res<span class="pl-pds">"</span></span>].data = outputVector;
+
+<span class="pl-c">// Get the command queue for our device. While a context can contain</span>
+<span class="pl-c">// multiple devices, each device still has its own command queue. All</span>
+<span class="pl-c">// operations in a queue will be carried out in the same order they were</span>
+<span class="pl-c">// enqueued. This will ensure that we do not read results before the</span>
+<span class="pl-c">// calculations of a kernel are finished.</span>
 CLCommandQueue *commandQueue = [context <span class="pl-c1">commandQueueForDevice:</span>GPUDevice];
+
+<span class="pl-c">// Run our kernel one million times, OpenCL will automatically determine</span>
+<span class="pl-c">// the parallelization.</span>
 <span class="pl-c1">NSArray</span> *dimensions = @[@(vectorSize)];
 [commandQueue <span class="pl-c1">enqueueKernel:</span>program.kernels.firstObject <span class="pl-c1">globalDimensions:</span>dimensions];
 
-<span class="pl-c">// Get results</span>
-[commandQueue <span class="pl-c1">readDataForArgument:</span>arg];
+<span class="pl-c">// Read the output data. This method will not return until all kernels</span>
+<span class="pl-c">// in the queue have finished execution and data has been copied back to</span>
+<span class="pl-c">// the arguments backing NSData object.</span>
+[commandQueue <span class="pl-c1">readDataForArgument:</span>outputArgument];
 
-<span class="pl-c">// Results are now in arg.data</span></pre></div>
+<span class="pl-c">// Output data should now be available. We will just print out every</span>
+<span class="pl-c">// 10,000th entry of the vectors to check the sanity of our results.</span>
+<span class="pl-k">for</span> (<span class="pl-k">NSUInteger</span> i = <span class="pl-c1">0</span>; i &lt; vectorSize; i += <span class="pl-c1">10000</span>) {
+    <span class="pl-c1">NSLog</span>(<span class="pl-s"><span class="pl-pds">@"</span><span class="pl-c1">%.2f</span> + <span class="pl-c1">%.2f</span> = <span class="pl-c1">%.2f</span><span class="pl-pds">"</span></span>, input_vector_a[i], input_vector_b[i], ((cl_float *)outputArgument.<span class="pl-smi">data</span>.<span class="pl-smi">bytes</span>)[i]);
+}</pre></div>
 
 <h2>
-<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h2>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Documentation</h2>
 
 <p>If <a href="https://github.com/tomaz/appledoc">appledoc</a> is installed on your system in <code>/usr/local/bin/appledoc</code> you can use the <code>Documentation</code> build target to create a docset from the header files and install them for Xcode to use. Documentation is largely incomplete but should cover the most important bits to get started.</p>
 
 <h2>
-<a id="limitations" class="anchor" href="#limitations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Limitations</h2>
+<a id="limitations" class="anchor" href="#limitations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Limitations</h2>
 
 <p>There is only some basic functionality at the moment. Kernels taking constant values are currently not supported, neither are image data types or events. If you want to rely on OpenCLKit in your own applications, you will almost certainly need to add some functionality before being able to use it. Pull requests and issues are alway welcome.</p>
 
@@ -74,4 +144,3 @@ CLCommandQueue *commandQueue = [context <span class="pl-c1">commandQueueForDevic
   
   </body>
 </html>
-
