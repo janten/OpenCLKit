@@ -25,6 +25,8 @@ appledoc \
 	-o "${TMP_DIR}/html" \
 	.
 
+ls -rtlha "${TMP_DIR}/html"
+
 appledoc \
 	--project-name "OpenCLKit" \
 	--project-company "Jan-Gerd Tenberge" \
@@ -38,6 +40,8 @@ appledoc \
 	-u \
 	-o "${TMP_DIR}/docset" \
 	.
+
+ls -rtlha "${TMP_DIR}/docset"
 
 if git checkout gh-pages
 then
