@@ -11,6 +11,11 @@
 
 @class CLContext;
 
+/**
+ *  CLBuffer objects are an opaque representation of memory areas that OpenCL
+ *  works with. CLCommandQueue and CLBuffer manage the movement of data between
+ *  compute host and compute devices.
+ */
 @interface CLBuffer : NSObject
 
 @property (readonly) cl_mem buffer;

@@ -302,7 +302,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "INFOPLIST_FILE=\"OpenCLKit/Info.plist\"\nVERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${INFOPLIST_FILE}\")\n\nappledoc \\\n--project-name \"OpenCLKit\" \\\n--project-company \"Jan-Gerd Tenberge\" \\\n--company-id com.jan-gerd \\\n--docset-feed-url \"https://janten.github.io/OpenCLKit/doc/feed.atom\" \\\n--docset-package-url \"https://janten.github.io/OpenCLKit/doc/%VERSION/OpenCLKit.xar\" \\\n--docset-package-filename \"OpenCLKit\" \\\n--ignore .m \\\n-v \"${VERSION}\" \\\n--install-docset \\\n-o /tmp/xcode_ocl_doc \\\n${PROJECT_DIR}\n\nrm docset-installed.txt\nrm -rf \"/tmp/xcode_ocl_doc\"";
+			shellScript = "INFOPLIST_FILE=\"OpenCLKit/Info.plist\"\nVERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${INFOPLIST_FILE}\")\n\nappledoc \\\n--project-name \"OpenCLKit\" \\\n--project-company \"Jan-Gerd Tenberge\" \\\n--company-id com.jan-gerd \\\n--docset-feed-url \"https://janten.github.io/OpenCLKit/doc/feed.atom\" \\\n--docset-package-url \"https://janten.github.io/OpenCLKit/doc/%VERSION/OpenCLKit.xar\" \\\n--docset-package-filename \"OpenCLKit\" \\\n--ignore .m \\\n-v \"${VERSION}\" \\\n--install-docset \\\n-o /tmp/xcode_ocl_doc \\\n${PROJECT_DIR}\n\nrm -rf \"/tmp/xcode_ocl_doc\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
