@@ -21,7 +21,7 @@
 
 /**
  *  Create a OpenCL context for the given devices. All devices must belong to
- *  the same platform.
+ *  the same CLPlatform instance.
  *
  *  @param devices An array of CLDevice objects form a single CLPlatform
  *  instance.
@@ -29,6 +29,5 @@
  *  @return A CLContext instance.
  */
 - (instancetype)initWithDevices:(NSArray *)devices NS_DESIGNATED_INITIALIZER;
-- (CLCommandQueue *)commandQueueForDevice:(CLDevice *)device;
 
 @end

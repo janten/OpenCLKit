@@ -15,6 +15,18 @@
 @class CLKernelArgument;
 @class CLBuffer;
 
+/**
+ *  Use CLCommandQueue to execute execute operations on a CLDevice. Multiple
+ *  command queues can exists for a single device but only one device can be
+ *  attached to each command queue. The CLKernel and CLBuffer objects you use
+ *  on a command queue must belong to the same CLContext as the device.
+ *
+ *  Kernels and data transfer tasks in the same CLCommandQueue will always be
+ *  executed in the same order they were enqueued, i.e. each operation waits for
+ *  the preceding operation to finish. Multiple command queues using the same
+ *  device may be executed in parallel, depending on the device hardware
+ *  capabilities and OpenCL implementation.
+ */
 @interface CLCommandQueue : NSObject
 
 @property (readonly) cl_command_queue commandQueue;

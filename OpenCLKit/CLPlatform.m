@@ -32,6 +32,10 @@
 	return result;
 }
 
++ (instancetype)platformWithId:(cl_platform_id)platform_id {
+	return [[CLPlatform alloc] initWithPlatformId:platform_id];
+}
+
 - (instancetype)initWithPlatformId:(cl_platform_id)platform_id {
 	self = [super init];
 	self.platformId = platform_id;
@@ -54,7 +58,7 @@
 	NSMutableArray *mutableResult = [NSMutableArray arrayWithCapacity:device_count];
 
 	for (cl_uint i = 0; i < device_count; i++) {
-		CLDevice *device = [[CLDevice alloc] initWithPlatform:self deviceId:devices[i]];
+		CLDevice *device = [[CLDevice alloc] initWithDeviceId:devices[i]];
 		[mutableResult addObject:device];
 	}
 	
@@ -71,6 +75,20 @@
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"%@ (%@ %@)", [super description], self.name, self.version];
+}
+
+#pragma mark - Comparison
+- (NSUInteger)hash {
+	return (NSUInteger)self.platformId;
+}
+
+- (BOOL)isEqual:(id)object {
+	
+	if ([object isKindOfClass:[self class]] && [object platformId] == self.platformId) {
+		return YES;
+	}
+	
+	return NO;
 }
 
 #pragma mark - Properties

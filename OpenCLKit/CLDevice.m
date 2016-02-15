@@ -7,12 +7,17 @@
 //
 
 #import "CLDevice.h"
+#import "CLPlatform.h"
 
 @implementation CLDevice
 
-- (instancetype)initWithPlatform:(CLPlatform *)platform deviceId:(cl_device_id)device_id {
++ (instancetype)deviceWithId:(cl_device_id)device_id {
+	CLDevice *device = [[CLDevice alloc] initWithDeviceId:device_id];
+	return device;
+}
+
+- (instancetype)initWithDeviceId:(cl_device_id)device_id {
 	self = [super init];
-	_platform = platform;
 	_deviceId = device_id;
 	return self;
 }
@@ -33,6 +38,12 @@
 }
 
 #pragma mark - Properties
+- (CLPlatform *)platform {
+	cl_platform_id platform_id;
+	clGetDeviceInfo(self.deviceId, CL_DEVICE_PLATFORM, sizeof(cl_platform_id), &platform_id, NULL);
+	return [CLPlatform platformWithId:platform_id];
+}
+
 - (NSString *)name {
 	return [self deviceInfo:CL_DEVICE_NAME];
 }

@@ -12,24 +12,23 @@
 #import "CLUtilities.h"
 #import "CLPlatform.h"
 
-@interface CLContext ()
-@property (readwrite) NSArray *devices;
-@property NSArray *commandQueues;
-@end
-
 @implementation CLContext
+
+- (instancetype)init {
+	return [self initWithDevices:@[]];
+}
 
 - (instancetype)initWithDevice:(CLDevice *)device {
 	return [self initWithDevices:@[device]];
 }
 
 - (instancetype)initWithDevices:(NSArray *)devices {
+
 	if (devices.count == 0) {
 		return nil;
 	}
 
 	self = [super init];
-	self.devices = [NSArray arrayWithArray:devices];
 	cl_device_id *device_ids = malloc(sizeof(cl_device_id) * devices.count);
 	
 	for (NSUInteger i = 0; i < devices.count; i++) {
@@ -43,15 +42,6 @@
 	_context = clCreateContext(properties, (cl_uint)devices.count, device_ids, NULL, NULL, &error);
 	[CLUtilities checkError:error message:@"Create context and command queues"];
 	free(device_ids);
-	NSMutableArray *commandQueues = [NSMutableArray arrayWithCapacity:devices.count];
-	
-	for (CLDevice *device in self.devices) {
-		CLCommandQueue *commandQueue = [[CLCommandQueue alloc] initWithDevice:device
-																	  context:self];
-		[commandQueues addObject:commandQueue];
-	}
-	
-	self.commandQueues = [NSArray arrayWithArray:commandQueues];
 	return self;
 }
 
@@ -60,14 +50,22 @@
 	clReleaseContext(self.context);
 }
 
-- (CLCommandQueue *)commandQueueForDevice:(CLDevice *)device {
-	NSUInteger index = [self.devices indexOfObject:device];
-
-	if (index == NSNotFound) {
-		return nil;
-	}
+#pragma mark - Properties
+- (NSArray *)devices {
+	NSMutableArray *devices = [NSMutableArray arrayWithCapacity:128];
+	size_t device_id_size_max = sizeof(cl_device_id) * 128;
+	cl_device_id *device_ids = malloc(device_id_size_max);
+	size_t device_id_size_ret;
+	clGetContextInfo(self.context, CL_CONTEXT_DEVICES, device_id_size_max, device_ids, &device_id_size_ret);
+	NSUInteger deviceCount = device_id_size_ret/sizeof(cl_device_id);
 	
-	return self.commandQueues[index];
+	for (int i = 0; i < deviceCount; i++) {
+		CLDevice *device = [CLDevice deviceWithId:device_ids[i]];
+		[devices addObject:device];
+	}
+
+	free(device_ids);
+	return devices;
 }
 
 @end

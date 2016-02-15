@@ -21,6 +21,12 @@
 @property (readonly) NSArray *extensions;
 
 /**
+ *  CLPlatform must be initialized with an OpenCL platform id. Use 
+ *  initWithPlatformId: or platforms instead of init.
+ */
+- (instancetype)init NS_UNAVAILABLE;
+
+/**
  *  Get all currently available platforms. The set of available platforms is
  *  unlikely to change at runtime, you may want to cache the results. Will
  *  return 128 platforms at most.
@@ -28,6 +34,17 @@
  *  @return An NSArray of CLPlatform objects.
  */
 + (NSArray *)platforms;
+
+/**
+ *  A convenience method for initWithPlatformId: that may retrieve the
+ *  requested platform from an internal cache. For two CLPlatform instances a, b
+ *  created by this method only [a isEqual:b] is assured, while a == b is not.
+ *
+ *  @param platform_id The opaque platform identifier used by OpenCL.
+ *
+ *  @return A CLPlatform object.
+ */
++ (instancetype)platformWithId:(cl_platform_id)platform_id;
 
 /**
  *  Initializes the platform with an OpenCL opaque platform id. You should
