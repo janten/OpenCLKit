@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>CLPlatform Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">OpenCLKit </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Jan-Gerd Tenberge</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/platformWithId:">+ platformWithId:</option>
+		
+		<option value="//api/name/platforms">+ platforms</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/devices">- devices</option>
+		
+		<option value="//api/name/devicesOfType:">- devicesOfType:</option>
+		
+		<option value="//api/name/init">- init</option>
+		
+		<option value="//api/name/initWithPlatformId:">- initWithPlatformId:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">CLPlatform Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>CLPlatform.h<br />CLPlatform.m</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="method-title"><code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>CLPlatform must be initialized with an OpenCL platform id. Use
+<a href="#//api/name/initWithPlatformId:">initWithPlatformId:</a> or <a href="#//api/name/platforms">platforms</a> instead of init.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)init</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>CLPlatform must be initialized with an OpenCL platform id. Use
+<a href="#//api/name/initWithPlatformId:">initWithPlatformId:</a> or <a href="#//api/name/platforms">platforms</a> instead of init.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CLPlatform.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/platforms" title="platforms"></a>
+	<h3 class="method-title"><code><a href="#//api/name/platforms">+&nbsp;platforms</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get all currently available platforms. The set of available platforms is
+unlikely to change at runtime, you may want to cache the results. Will
+return 128 platforms at most.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (NSArray *)platforms</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An NSArray of CLPlatform objects.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get all currently available platforms. The set of available platforms is
+unlikely to change at runtime, you may want to cache the results. Will
+return 128 platforms at most.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CLPlatform.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/platformWithId:" title="platformWithId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/platformWithId:">+&nbsp;platformWithId:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>A convenience method for initWithPlatformId: that may retrieve the
+requested platform from an internal cache. For two CLPlatform instances a, b
+created by this method only [a isEqual:b] is assured, while a == b is not.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)platformWithId:(cl_platform_id)<em>platform_id</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>platform_id</code></th>
+						<td><p>The opaque platform identifier used by OpenCL.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A CLPlatform object.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>A convenience method for initWithPlatformId: that may retrieve the
+requested platform from an internal cache. For two CLPlatform instances a, b
+created by this method only [a isEqual:b] is assured, while a == b is not.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CLPlatform.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithPlatformId:" title="initWithPlatformId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithPlatformId:">&ndash;&nbsp;initWithPlatformId:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initializes the platform with an OpenCL opaque platform id. You should
+usually use <a href="#//api/name/platforms">[CLPlatform platforms]</a> instead of calling this method directly.
+Validity of the platform id is not checked.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithPlatformId:(cl_platform_id)<em>platform_id</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>platform_id</code></th>
+						<td><p>The opaque platform identifier used by OpenCL.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An initialized CLPlatform object.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Initializes the platform with an OpenCL opaque platform id. You should
+usually use <a href="#//api/name/platforms">[CLPlatform platforms]</a> instead of calling this method directly.
+Validity of the platform id is not checked.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CLPlatform.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/devices" title="devices"></a>
+	<h3 class="method-title"><code><a href="#//api/name/devices">&ndash;&nbsp;devices</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get all devices available on this platform. The same hardware device may be
+available on multiple <a href="#//api/name/platforms">platforms</a>. A new set of <a href="../Classes/CLDevice.html">CLDevice</a> instances will be
+created each time you call this method. Calling this method is identical to
+calling <a href="#//api/name/devicesOfType:">devicesOfType:</a> with device type CL_DEVICE_TYPE_ALL.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSArray *)devices</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A NSArray of <a href="../Classes/CLDevice.html">CLDevice</a> objects.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get all devices available on this platform. The same hardware device may be
+available on multiple <a href="#//api/name/platforms">platforms</a>. A new set of <a href="../Classes/CLDevice.html">CLDevice</a> instances will be
+created each time you call this method. Calling this method is identical to
+calling <a href="#//api/name/devicesOfType:">devicesOfType:</a> with device type CL_DEVICE_TYPE_ALL.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CLPlatform.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/devicesOfType:" title="devicesOfType:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/devicesOfType:">&ndash;&nbsp;devicesOfType:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get <a href="#//api/name/devices">devices</a> of the given type available on this platform.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSArray *)devicesOfType:(cl_device_type)<em>device_type</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>device_type</code></th>
+						<td><p>The type of the <a href="#//api/name/devices">devices</a> you want returned.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A NSArray of <a href="../Classes/CLDevice.html">CLDevice</a> objects.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get <a href="#//api/name/devices">devices</a> of the given type available on this platform.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CLPlatform.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Jan-Gerd Tenberge. All rights reserved. Updated: 2016-02-15</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
