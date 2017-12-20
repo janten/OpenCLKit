@@ -23,6 +23,7 @@
 @property (readonly) NSString *typeName;
 @property (readonly) NSString *name;
 
+- (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithKernel:(CLKernel *)kernel argumentIndex:(cl_uint)index NS_DESIGNATED_INITIALIZER;
 
 - (void)setValueWithBuffer:(CLBuffer *)buffer;

@@ -18,6 +18,8 @@
 @property (readonly, weak) CLContext *context;
 @property (readonly) NSArray *kernels;
 
+- (instancetype)init NS_UNAVAILABLE;
+
 /**
  *  Creates a program from the given source code by compiling and building all
  *  kernels found in the code for all devices in the given context.

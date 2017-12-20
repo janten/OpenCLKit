@@ -79,7 +79,7 @@
     return _length;
 }
 
-- (void *)bytes {
+- (const void *)bytes {
     return self.data.bytes;
 }
 

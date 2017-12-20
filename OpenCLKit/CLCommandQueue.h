@@ -33,6 +33,8 @@
 @property (readonly) CLDevice *device;
 @property (readonly, weak) CLContext *context;
 
+- (instancetype)init NS_UNAVAILABLE;
+
 - (instancetype)initWithDevice:(CLDevice *)device context:(CLContext *)context NS_DESIGNATED_INITIALIZER;
 
 /**

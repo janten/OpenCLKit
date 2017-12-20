@@ -20,8 +20,9 @@
 
 @property (readonly) cl_mem buffer;
 @property (readonly) size_t length;
-@property (readonly) void *bytes;
+@property (readonly) const void *bytes;
 
+- (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithContext:(CLContext *)context flags:(cl_mem_flags)flags data:(NSData *)data NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithContext:(CLContext *)context length:(NSUInteger)length NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithContext:(CLContext *)context data:(NSData *)data;

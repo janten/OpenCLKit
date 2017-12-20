@@ -19,6 +19,8 @@
 @property (readonly) NSString *name;
 @property (readonly) NSArray *arguments;
 
+
+- (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithProgram:(CLProgram *)program kernel:(cl_kernel)kernel NS_DESIGNATED_INITIALIZER;
 
 /**
